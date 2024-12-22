@@ -1,11 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://omkqitj3by8v"]
+[gd_scene load_steps=15 format=3 uid="uid://omkqitj3by8v"]
 
 [ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
 [ext_resource type="Texture2D" uid="uid://cbt7qpfqc6trg" path="res://level/levelWithLava.png" id="1_xryi3"]
 [ext_resource type="Texture2D" uid="uid://cwjg0e8ke0qa" path="res://player/Lander_0.png" id="2_qn7y8"]
+[ext_resource type="Texture2D" uid="uid://dosflbl4771cc" path="res://player/fireSprite.png" id="3_ohatq"]
+[ext_resource type="AudioStream" uid="uid://cu185vlc38sq0" path="res://player/rocketShipSound.mp3" id="4_gqhyd"]
+[ext_resource type="Script" path="res://rocketShipSound.gd" id="5_36vn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf6hw"]
+atlas = ExtResource("3_ohatq")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s0c3"]
+atlas = ExtResource("3_ohatq")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl4x4"]
+atlas = ExtResource("3_ohatq")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tu5id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf6hw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s0c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl4x4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_putk1"]
 friction = 0.0
@@ -194,6 +226,15 @@ shape = SubResource("RectangleShape2D_qb25u")
 texture = ExtResource("2_qn7y8")
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+
+[node name="FireSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+sprite_frames = SubResource("SpriteFrames_tu5id")
+autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RigidBody2D"]
+stream = ExtResource("4_gqhyd")
+autoplay = true
+script = ExtResource("5_36vn8")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_q6elh")
