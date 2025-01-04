@@ -8,12 +8,12 @@ var lastThrustDeltaUpdate = 0
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("lRot"):
 		apply_torque_impulse(-spin_force)
 	if Input.is_action_pressed("rRot"):
 		apply_torque_impulse(spin_force)
-	if Input.is_action_pressed("thrust"):				
+	if Input.is_action_pressed("thrust"):
 		if(engine_force_step < ENGINE_FORCE_STEP_MAX):
 			engine_force_step += 1
 		
@@ -29,7 +29,7 @@ func _physics_process(delta):
 		audio_stream_player_2d.stream_paused = false
 		fire_sprite_2d.scale.x = engine_force_step * 0.1
 		fire_sprite_2d.scale.y = engine_force_step * 0.1
-		fire_sprite_2d.position.y = 70.0 * engine_force_step * 0.1
+		#fire_sprite_2d.position.y = 70.0 * engine_force_step * 0.1
 		audio_stream_player_2d.volume_db = linear_to_db(abs(engine_force_step) * 0.1)
 		
 	print(engine_force_step)
