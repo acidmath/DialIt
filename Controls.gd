@@ -2,8 +2,8 @@ extends RigidBody2D
 const ENGINE_FORCE_STEP_MAX = 10
 const THRUST_DELTA_UPDATE_THRESHOLD = 0.5
 var engine_force_step = 0
-var engine_force = 300.0
-var spin_force = 300.0
+var engine_force = 200.0
+var spin_force = 100.0
 var lastThrustDeltaUpdate = 0
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
