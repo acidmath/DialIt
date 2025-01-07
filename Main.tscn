@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://omkqitj3by8v"]
+[gd_scene load_steps=18 format=4 uid="uid://omkqitj3by8v"]
 
 [ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
 [ext_resource type="Texture2D" uid="uid://cwjg0e8ke0qa" path="res://player/Lander_0.png" id="2_qn7y8"]
@@ -7,7 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://cu185vlc38sq0" path="res://player/rocketShipSound.mp3" id="4_gqhyd"]
 [ext_resource type="Script" path="res://rocketShipSound.gd" id="5_36vn8"]
 [ext_resource type="Texture2D" uid="uid://cbb68rlvjnmdc" path="res://level/tio_moon_2.png" id="6_4v2p2"]
-[ext_resource type="Texture2D" uid="uid://d2wh766xj1ku" path="res://level/moonBackground_Stars.png" id="8_53ypa"]
+[ext_resource type="Script" path="res://Background.gd" id="8_aylwr"]
+[ext_resource type="Texture2D" uid="uid://dynhy4myddb03" path="res://level/earthBlue.png" id="8_i3xlp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -433,42 +434,6 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_n0ll6")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcme3"]
-atlas = ExtResource("8_53ypa")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxkk5"]
-atlas = ExtResource("8_53ypa")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cox6r"]
-atlas = ExtResource("8_53ypa")
-region = Rect2(512, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kmqim"]
-atlas = ExtResource("8_53ypa")
-region = Rect2(768, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0e2g7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qcme3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nxkk5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cox6r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kmqim")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
-
 [node name="Root" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
@@ -506,118 +471,11 @@ tile_set = SubResource("TileSet_6tt8j")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(256, 256)
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1024, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 3
-offset = Vector2(512, 512)
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1024, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 2
-offset = Vector2(0, 512)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1024, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 1
-offset = Vector2(512, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1024, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(256, 256)
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(0, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 3
-offset = Vector2(512, 512)
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(0, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 2
-offset = Vector2(0, 512)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(0, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 1
-offset = Vector2(512, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(0, 1024)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(256, 256)
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1024, 0)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 3
-offset = Vector2(512, 512)
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1024, 0)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 2
-offset = Vector2(0, 512)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1024, 0)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 1
-offset = Vector2(512, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1024, 0)
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(256, 256)
+motion_scale = Vector2(0, 0)
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 3
-offset = Vector2(512, 512)
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("8_i3xlp")
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 2
-offset = Vector2(0, 512)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
-frame = 1
-offset = Vector2(512, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
-sprite_frames = SubResource("SpriteFrames_0e2g7")
-autoplay = "default"
+[node name="GeneratedBackground" type="Node2D" parent="ParallaxBackground"]
+script = ExtResource("8_aylwr")

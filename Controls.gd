@@ -29,8 +29,5 @@ func _physics_process(_delta):
 		audio_stream_player_2d.stream_paused = false
 		fire_sprite_2d.scale.x = engine_force_step * 0.1
 		fire_sprite_2d.scale.y = engine_force_step * 0.1
-		#fire_sprite_2d.position.y = 70.0 * engine_force_step * 0.1
 		audio_stream_player_2d.volume_db = linear_to_db(abs(engine_force_step) * 0.1)
 		
-	print(engine_force_step)
-	print(fire_sprite_2d.position.y)
