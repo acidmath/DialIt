@@ -1,6 +1,6 @@
 extends Node2D
 @onready var canvas_layer = $"."
-var origin
+var origin = Vector2(0, 0)
 var screenRect
 var random
 var magicNumber
@@ -8,14 +8,11 @@ var maxWidth
 var minWidth = 0
 var maxHeight
 var minHeight = 0
+var oldStars: PackedVector2Array = PackedVector2Array()
 
 func _ready():
 	# setup backround size
-	origin = Vector2(0, 0)
-	var screenSize = get_window().get("size")
-	maxWidth = screenSize.x
-	maxHeight = screenSize.y
-	screenRect = Rect2(origin, screenSize)
+	SetupScreenRect()
 	
 	# setup star randomizer
 	random = RandomNumberGenerator.new()
@@ -27,19 +24,43 @@ func _ready():
 
 func _draw():
 	DrawBlackBackground()
-	DrawStarsRandomly()
+	DrawStars()
 
 func OnWindowSizeChanged():
-	canvas_layer.queue_redraw()
+	if SetupScreenRect():
+		canvas_layer.queue_redraw()
+
+func SetupScreenRect() -> bool:
+	var screenSize = get_window().get("size")	
+	if maxWidth == null or maxHeight == null or screenSize.x > maxWidth or screenSize.y > maxHeight:
+		screenRect = Rect2(origin, screenSize)
+		maxWidth = screenSize.x
+		maxHeight = screenSize.y
+		return true
+	else:
+		return false
 
 func DrawBlackBackground():
 	canvas_layer.draw_rect(screenRect, Color.BLACK)
 
-func DrawStarsRandomly():
-	for x in range(minWidth, maxWidth):
-		for y in range(minHeight, maxHeight):
-			if random.randi() % 1000 == magicNumber:
-				var coord = Vector2(x, y)
-				canvas_layer.draw_circle(coord, 1, Color.WHITE)
+func DrawStars():
+	DrawOldStars()
+	for x in maxWidth:
+		for y in maxHeight:
+			if x > minWidth or y > minHeight:
+				DrawRandomStar(x, y)
 	minWidth = maxWidth
 	minHeight = maxHeight
+
+func DrawOldStars():
+	for coord in oldStars:
+		DrawStar(coord)
+
+func DrawRandomStar(x: int, y: int):
+	if random.randi() % 1000 == magicNumber:
+		var coord = Vector2(x, y)
+		DrawStar(coord)
+		oldStars.append(coord)
+
+func DrawStar(coord: Vector2):
+	canvas_layer.draw_circle(coord, 1, Color.WHITE)
