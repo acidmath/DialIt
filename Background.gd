@@ -1,5 +1,6 @@
 extends Node2D
 @onready var canvas_layer = $"."
+const inverseProbability = 500
 var origin = Vector2(0, 0)
 var screenRect
 var random
@@ -17,7 +18,7 @@ func _ready():
 	# setup star randomizer
 	random = RandomNumberGenerator.new()
 	random.randomize()
-	magicNumber = random.randi() % 1000
+	magicNumber = random.randi() % inverseProbability
 	
 	# connect to window size changes
 	get_window().size_changed.connect(OnWindowSizeChanged)
@@ -31,7 +32,7 @@ func OnWindowSizeChanged():
 		canvas_layer.queue_redraw()
 
 func SetupScreenRect() -> bool:
-	var screenSize = get_window().get("size")	
+	var screenSize = get_window().get("size")
 	if maxWidth == null or maxHeight == null or screenSize.x > maxWidth or screenSize.y > maxHeight:
 		screenRect = Rect2(origin, screenSize)
 		maxWidth = screenSize.x
@@ -57,7 +58,7 @@ func DrawOldStars():
 		DrawStar(coord)
 
 func DrawRandomStar(x: int, y: int):
-	if random.randi() % 1000 == magicNumber:
+	if random.randi() % inverseProbability == magicNumber:
 		var coord = Vector2(x, y)
 		DrawStar(coord)
 		oldStars.append(coord)
