@@ -11,7 +11,7 @@ var lastThrustDeltaUpdate = 0
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("lRot"):
-		apply_force(Vector2.from_angle(rotation + PI) * spinForce, TopPosition.rotated(rotation + PI))
+		apply_force(Vector2.from_angle(rotation + PI) * spinForce, TopPosition.rotated(rotation))
 		print(Vector2.from_angle(rotation + PI))
 	if Input.is_action_pressed("rRot"):
 		apply_force(Vector2.from_angle(rotation) * spinForce, TopPosition.rotated(rotation))

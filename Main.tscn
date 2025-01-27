@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://omkqitj3by8v"]
+[gd_scene load_steps=20 format=4 uid="uid://omkqitj3by8v"]
 
 [ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
 [ext_resource type="Texture2D" uid="uid://dhtt3gq3hvmtp" path="res://player/Lander_1.png" id="2_cv023"]
@@ -12,6 +12,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
+
+[sub_resource type="Gradient" id="Gradient_pr85r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q77k7"]
+gradient = SubResource("Gradient_pr85r")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qf6hw"]
 atlas = ExtResource("3_ohatq")
@@ -449,6 +454,11 @@ texture = ExtResource("2_cv023")
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
 script = ExtResource("3_jmdgt")
+
+[node name="TouchScreenButton_Thrust" type="TouchScreenButton" parent="RigidBody2D/Camera2D"]
+position = Vector2(-35, -140)
+texture_normal = SubResource("GradientTexture2D_q77k7")
+action = "thrust"
 
 [node name="FireSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 position = Vector2(0, 35)
