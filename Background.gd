@@ -21,7 +21,7 @@ func _draw():
 	DrawStars()
 	UpdateMaxScreenRect()
 
-func _on_screen_size_changed(newSize: Rect2, oldSize: Rect2):
+func _on_screen_size_changed(newSize: Rect2, _oldSize):
 	screenRect = newSize
 	canvas_layer.queue_redraw()
 
@@ -34,7 +34,6 @@ func DrawStars():
 		for y in screenRect.size.y:
 			if x > screenRectMax.size.x or y > screenRectMax.size.y:
 				DrawRandomStar(x, y)
-	
 
 func DrawOldStars():
 	for coord in oldStars:

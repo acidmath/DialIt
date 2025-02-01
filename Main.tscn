@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=4 uid="uid://omkqitj3by8v"]
+[gd_scene load_steps=20 format=4 uid="uid://omkqitj3by8v"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ofygb"]
 [ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
 [ext_resource type="Texture2D" uid="uid://dhtt3gq3hvmtp" path="res://player/Lander_1.png" id="2_cv023"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="3_jmdgt"]
 [ext_resource type="Texture2D" uid="uid://dosflbl4771cc" path="res://player/fireSprite.png" id="3_ohatq"]
+[ext_resource type="Texture2D" uid="uid://bi5yxjiqocynm" path="res://level/dads_first_lava_block.png" id="3_phtau"]
 [ext_resource type="AudioStream" uid="uid://cu185vlc38sq0" path="res://player/rocketShipSound.mp3" id="4_gqhyd"]
 [ext_resource type="Script" path="res://rocketShipSound.gd" id="5_36vn8"]
 [ext_resource type="Texture2D" uid="uid://cbb68rlvjnmdc" path="res://level/tio_moon_2.png" id="6_4v2p2"]
@@ -13,11 +14,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
-
-[sub_resource type="Gradient" id="Gradient_pr85r"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q77k7"]
-gradient = SubResource("Gradient_pr85r")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qf6hw"]
 atlas = ExtResource("3_ohatq")
@@ -443,6 +439,18 @@ sources/0 = SubResource("TileSetAtlasSource_n0ll6")
 [node name="Root" type="Node2D"]
 script = ExtResource("1_ofygb")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-315, -560)
+ignore_rotation = false
+script = ExtResource("3_jmdgt")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D"]
+position = Vector2(-595, -350)
+scale = Vector2(20, 5)
+texture_normal = ExtResource("3_phtau")
+shape_centered = false
+action = "thrust"
+
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-315, -560)
 collision_layer = 2
@@ -453,14 +461,6 @@ shape = SubResource("RectangleShape2D_qb25u")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("2_cv023")
-
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
-script = ExtResource("3_jmdgt")
-
-[node name="TouchScreenButton_Thrust" type="TouchScreenButton" parent="RigidBody2D/Camera2D"]
-position = Vector2(-35, -140)
-texture_normal = SubResource("GradientTexture2D_q77k7")
-action = "thrust"
 
 [node name="FireSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 position = Vector2(0, 35)
@@ -473,6 +473,8 @@ offset = Vector2(-35, 0)
 stream = ExtResource("4_gqhyd")
 autoplay = true
 script = ExtResource("5_36vn8")
+
+[node name="CameraPivot" type="Node2D" parent="RigidBody2D"]
 
 [node name="Map" type="Node2D" parent="."]
 
