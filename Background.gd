@@ -3,55 +3,38 @@ extends Node2D
 const inverseProbability = 500
 var origin = Vector2(0, 0)
 var screenRect
+var screenRectMax = Rect2(0, 0, 0, 0)
 var random
 var magicNumber
-var maxWidth
-var minWidth = 0
-var maxHeight
-var minHeight = 0
 var oldStars: PackedVector2Array = PackedVector2Array()
 
-func _ready():
-	# setup backround size
-	SetupScreenRect()
-	
+func _ready():	
 	# setup star randomizer
 	random = RandomNumberGenerator.new()
 	random.randomize()
 	magicNumber = random.randi() % inverseProbability
-	
-	# connect to window size changes
-	get_window().size_changed.connect(OnWindowSizeChanged)
 
 func _draw():
+	if(screenRect == null):
+		return
 	DrawBlackBackground()
 	DrawStars()
+	UpdateMaxScreenRect()
 
-func OnWindowSizeChanged():
-	if SetupScreenRect():
-		canvas_layer.queue_redraw()
-
-func SetupScreenRect() -> bool:
-	var screenSize = get_window().get("size")
-	if maxWidth == null or maxHeight == null or screenSize.x > maxWidth or screenSize.y > maxHeight:
-		screenRect = Rect2(origin, screenSize)
-		maxWidth = screenSize.x
-		maxHeight = screenSize.y
-		return true
-	else:
-		return false
+func _on_screen_size_changed(newSize: Rect2, oldSize: Rect2):
+	screenRect = newSize
+	canvas_layer.queue_redraw()
 
 func DrawBlackBackground():
 	canvas_layer.draw_rect(screenRect, Color.BLACK)
 
 func DrawStars():
 	DrawOldStars()
-	for x in maxWidth:
-		for y in maxHeight:
-			if x > minWidth or y > minHeight:
+	for x in screenRect.size.x:
+		for y in screenRect.size.y:
+			if x > screenRectMax.size.x or y > screenRectMax.size.y:
 				DrawRandomStar(x, y)
-	minWidth = maxWidth
-	minHeight = maxHeight
+	
 
 func DrawOldStars():
 	for coord in oldStars:
@@ -65,3 +48,9 @@ func DrawRandomStar(x: int, y: int):
 
 func DrawStar(coord: Vector2):
 	canvas_layer.draw_circle(coord, 1, Color.WHITE)
+	
+func UpdateMaxScreenRect():
+	if(screenRect.size.x > screenRectMax.size.x):
+		screenRectMax.size.x = screenRect.size.x
+	if(screenRect.size.y > screenRectMax.size.y):
+		screenRectMax.size.y = screenRect.size.y

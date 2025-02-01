@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://omkqitj3by8v"]
+[gd_scene load_steps=21 format=4 uid="uid://omkqitj3by8v"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_ofygb"]
 [ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
 [ext_resource type="Texture2D" uid="uid://dhtt3gq3hvmtp" path="res://player/Lander_1.png" id="2_cv023"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="3_jmdgt"]
@@ -440,6 +441,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_n0ll6")
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_ofygb")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-315, -560)
@@ -489,3 +491,5 @@ motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("8_i3xlp")
+
+[connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
