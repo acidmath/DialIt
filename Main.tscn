@@ -445,6 +445,7 @@ ignore_rotation = false
 script = ExtResource("3_jmdgt")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-595, -350)
 scale = Vector2(20, 5)
 texture_normal = ExtResource("3_phtau")
