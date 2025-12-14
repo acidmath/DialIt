@@ -35,6 +35,7 @@ func _physics_process(_delta):
 		fire_sprite_2d.scale.y = engineForceStep * 0.1
 		audio_stream_player_2d.volume_db = linear_to_db(abs(engineForceStep) * 0.1)
 
-func _on_body_entered(body):
-	get_tree().reload_current_scene()
-	#print("balls")
+func _on_body_entered(body: Node2D):
+	print("collided with: "+body.get_class())
+	get_tree().call_deferred("reload_current_scene")
+	
