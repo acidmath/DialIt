@@ -429,7 +429,7 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_6tt8j"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
+physics_layer_0/collision_mask = 2
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_5frc2")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Ground"
@@ -455,6 +455,8 @@ action = "thrust"
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-315, -560)
 collision_layer = 2
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_up563")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -476,6 +478,7 @@ autoplay = true
 script = ExtResource("5_36vn8")
 
 [node name="CameraPivot" type="Node2D" parent="RigidBody2D"]
+position = Vector2(0, 2)
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -496,3 +499,4 @@ motion_scale = Vector2(0, 0)
 texture = ExtResource("8_i3xlp")
 
 [connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

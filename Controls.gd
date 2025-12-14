@@ -8,6 +8,7 @@ var spinForce = 100.0
 var lastThrustDeltaUpdate = 0
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
+@onready var collision_shape = $CollisionShape2D
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("lRot"):
@@ -33,4 +34,7 @@ func _physics_process(_delta):
 		fire_sprite_2d.scale.x = engineForceStep * 0.1
 		fire_sprite_2d.scale.y = engineForceStep * 0.1
 		audio_stream_player_2d.volume_db = linear_to_db(abs(engineForceStep) * 0.1)
-		
+
+func _on_body_entered(body):
+	get_tree().reload_current_scene()
+	#print("balls")

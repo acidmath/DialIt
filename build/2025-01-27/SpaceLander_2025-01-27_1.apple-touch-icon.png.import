@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvrgjga8cc1tf"
-path="res://.godot/imported/SpaceLander_2025-01-27_1.apple-touch-icon.png-b811264e6fd4c9636d9a343c56df77a1.ctex"
+path="res://.godot/imported/SpaceLander_2025-01-27_1.apple-touch-icon.png-a2aa66b85e48b0c650006e0f78f048af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/SpaceLander_2025-01-27_1.apple-touch-icon.png"
-dest_files=["res://.godot/imported/SpaceLander_2025-01-27_1.apple-touch-icon.png-b811264e6fd4c9636d9a343c56df77a1.ctex"]
+source_file="res://build/2025-01-27/SpaceLander_2025-01-27_1.apple-touch-icon.png"
+dest_files=["res://.godot/imported/SpaceLander_2025-01-27_1.apple-touch-icon.png-a2aa66b85e48b0c650006e0f78f048af.ctex"]
 
 [params]
 

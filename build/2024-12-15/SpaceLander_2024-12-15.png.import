@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvr14hqsj8blk"
-path="res://.godot/imported/SpaceLander_2024-12-15.png-8da8cb5ff2f2810c667cca534d78df7a.ctex"
+path="res://.godot/imported/SpaceLander_2024-12-15.png-52dbf8902feffc88f597e25e44e4abe2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/SpaceLander_2024-12-15.png"
-dest_files=["res://.godot/imported/SpaceLander_2024-12-15.png-8da8cb5ff2f2810c667cca534d78df7a.ctex"]
+source_file="res://build/2024-12-15/SpaceLander_2024-12-15.png"
+dest_files=["res://.godot/imported/SpaceLander_2024-12-15.png-52dbf8902feffc88f597e25e44e4abe2.ctex"]
 
 [params]
 
