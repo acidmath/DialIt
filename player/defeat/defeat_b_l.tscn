@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi3q1t1q0m7ol"]
+
+[ext_resource type="Texture2D" uid="uid://sw77unrdtyme" path="res://player/defeat/corner_bl.png" id="1_m0w6l"]
+
+[node name="DefeatBL" type="RigidBody2D"]
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m0w6l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(32, -32, -2, -32, -2, -30, -3, -30, -3, -22.5, -9, -26.1, -9, -28.5, -20.4, -26, -22.9, -26, -27.9, -20, -29.6, -20, -32, -10.1, -32, 6.3, -31, 12.3, -31, 16, -24.1, 16, -15.6, 6.3, -12.2, 7, -11.1, 7, -5.1, 16, 1.5, 16, 4.5, 5, 32, 5)

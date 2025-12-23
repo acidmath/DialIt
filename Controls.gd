@@ -1,11 +1,17 @@
 extends RigidBody2D
+class_name PlayerController
+
+signal player_defeated(player : PlayerController)
+
 const ENGINE_FORCE_STEP_MAX = 10
 const THRUST_DELTA_UPDATE_THRESHOLD = 0.5
 const TopPosition = Vector2(0, -64)
+
 var engineForceStep = 0
 var engineForce = 200.0
 var spinForce = 100.0
 var lastThrustDeltaUpdate = 0
+
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
 @onready var collision_shape = $CollisionShape2D
@@ -38,4 +44,6 @@ func _physics_process(_delta):
 func _on_body_entered(body: Node2D):
 	var platform = body as LandingPlatform
 	if platform:
-		get_tree().call_deferred("reload_current_scene")	
+		get_tree().call_deferred("reload_current_scene")
+	else:
+		player_defeated.emit(self)
