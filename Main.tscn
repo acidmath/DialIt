@@ -514,3 +514,4 @@ texture = ExtResource("8_i3xlp")
 [connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
 [connection signal="player_defeated" from="RigidBody2D" to="." method="OnPlayerDefeated"]
+[connection signal="player_defeated" from="RigidBody2D" to="Camera2D" method="PlayerDefeated"]

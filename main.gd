@@ -6,11 +6,6 @@ var origin = Vector2(0, 0)
 var screenRect: Rect2
 var screenRectPrev = Rect2(0, 0, 0, 0)
 
-#var defeat_bottom_left = preload("res://player/defeat/corner_bl.png")
-#var defeat_bottom_right = preload("res://player/defeat/corner_br.png")
-#var defeat_top_left = preload("res://player/defeat/corner_tl.png")
-#var defeat_top_right = preload("res://player/defeat/corner_tr.png")
-
 func _ready():
 	# setup backround size
 	SetupScreenRect()
@@ -23,9 +18,9 @@ func OnWindowSizeChanged():
 	if SetupScreenRect():
 		EmitScreenSizeChanged()
 
-func OnPlayerDefeated(player : PlayerController):
+func OnPlayerDefeated(player : PlayerController, collision_normal : Vector2):
 	print("big loser")
-	SpawnDefeatBodies(player)
+	SpawnDefeatBodies(player, collision_normal)
 
 func SetupScreenRect() -> bool:
 	var screenSize = get_window().get("size")
@@ -34,13 +29,13 @@ func SetupScreenRect() -> bool:
 		return true
 	else:
 		return false
-		
+
 func EmitScreenSizeChanged():
 	screen_size_changed.emit(screenRect, screenRectPrev)
 	screenRectPrev.size.x = screenRect.size.x
 	screenRectPrev.size.y = screenRect.size.y
-	
-func SpawnDefeatBodies(player : PlayerController):
+
+func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
 	var defeat_bottom_left = preload("res://player/defeat/defeat_b_l.tscn")
 	var defeat_bottom_right = preload("res://player/defeat/defeat_b_r.tscn")
 	var defeat_top_left = preload("res://player/defeat/defeat_t_l.tscn")
@@ -50,16 +45,31 @@ func SpawnDefeatBodies(player : PlayerController):
 	var corner_br = defeat_bottom_right.instantiate()
 	var corner_tl = defeat_top_left.instantiate()
 	var corner_tr = defeat_top_right.instantiate()
-	print(player)
-	var position = player.global_position
-	corner_bl.global_position = position
-	corner_br.global_position = position
-	corner_tl.global_position = position
-	corner_tr.global_position = position
 	
-	self.remove_child(player)
+	var offset_bl = Vector2(-32, 32)
+	var offset_br = Vector2(32, 32)
+	var offset_tl = Vector2(-32, -32)
+	var offset_tr = Vector2(32, -32)
+	
+	var position = player.global_position
+	corner_bl.global_position = position + offset_bl
+	corner_br.global_position = position + offset_br
+	corner_tl.global_position = position + offset_tl
+	corner_tr.global_position = position + offset_tr
+	
+	for child in player.get_children():
+		child.queue_free()
+	
+	player.queue_free()
 	
 	self.add_child(corner_bl)
 	self.add_child(corner_br)
 	self.add_child(corner_tl)
 	self.add_child(corner_tr)
+	
+	var explosionVector = 750 * collision_normal
+	
+	corner_bl.apply_central_impulse(explosionVector + Vector2(randf_range(-500, 0), 0))
+	corner_br.apply_central_impulse(explosionVector + Vector2(randf_range(0, 500), 0))
+	corner_tl.apply_central_impulse(explosionVector + Vector2(randf_range(-500, 0), 0))
+	corner_tr.apply_central_impulse(explosionVector + Vector2(randf_range(0, 500), 0))
