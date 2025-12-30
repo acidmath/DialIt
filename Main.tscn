@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://omkqitj3by8v"]
+[gd_scene load_steps=24 format=4 uid="uid://omkqitj3by8v"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ofygb"]
 [ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dynhy4myddb03" path="res://level/earthBlue.png" id="8_i3xlp"]
 [ext_resource type="Script" path="res://platform/platform.gd" id="9_0l7w6"]
 [ext_resource type="Texture2D" uid="uid://dyjwd8ufqjgyn" path="res://platform/platform.png" id="9_kahn3"]
+[ext_resource type="PackedScene" uid="uid://cwpn6p0etxg47" path="res://pause_menu.tscn" id="14_ml8ns"]
+[ext_resource type="Script" path="res://rich_text_label.gd" id="15_30bes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -511,7 +513,25 @@ motion_scale = Vector2(0, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("8_i3xlp")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_ml8ns")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -254.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 85.0
+grow_horizontal = 0
+script = ExtResource("15_30bes")
+
 [connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
 [connection signal="player_defeated" from="RigidBody2D" to="." method="OnPlayerDefeated"]
 [connection signal="player_defeated" from="RigidBody2D" to="Camera2D" method="PlayerDefeated"]
+[connection signal="player_defeated" from="RigidBody2D" to="CanvasLayer/PauseMenu" method="endGame"]
