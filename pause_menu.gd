@@ -1,5 +1,14 @@
 extends Control
 
+func _ready() -> void:
+	get_tree().find_node("VolumeSlider").Value = PlayerSettings.volume * 10
+
+func _process(_delta):
+	testesc()
+
+func volume_changed(volume : float):
+	PlayerSettings.volume = volume / 10
+
 func resume():
 	get_tree().paused = false
 	self.visible = false
@@ -23,9 +32,6 @@ func _on_restart_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
-
-func _process(_delta):
-	testesc()
 
 func endGame(_player, _collision_normal):
 	self.visible = true

@@ -41,13 +41,12 @@ func _physics_process(_delta):
 		audio_stream_player_2d.stream_paused = false
 		fire_sprite_2d.scale.x = engineForceStep * 0.1
 		fire_sprite_2d.scale.y = engineForceStep * 0.1
-		audio_stream_player_2d.volume_db = linear_to_db(abs(engineForceStep) * 0.1)
+		audio_stream_player_2d.volume_db = linear_to_db(abs(engineForceStep) * 0.1 * PlayerSettings.volume)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	lastContactNormal = state.get_contact_local_normal(0)
 
 func _on_body_entered(body: Node2D):
-	print("balls2")
 	if(hasBeenDefeated):
 		return
 	var platform = body as LandingPlatform
