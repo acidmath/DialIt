@@ -1,7 +1,10 @@
 extends Control
 
+var slider : HSlider
+
 func _ready() -> void:
-	get_tree().find_node("VolumeSlider").Value = PlayerSettings.volume * 10
+	slider = self.get_node("./PanelContainer/HBoxContainer/VBoxContainer2/VolumeSlider")
+	slider.value = PlayerSettings.volume * 10
 
 func _process(_delta):
 	testesc()
