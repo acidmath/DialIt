@@ -46,10 +46,22 @@ func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
 	var corner_tl = defeat_top_left.instantiate()
 	var corner_tr = defeat_top_right.instantiate()
 	
-	var offset_bl = Vector2(-32, 32)
-	var offset_br = Vector2(32, 32)
-	var offset_tl = Vector2(-32, -32)
-	var offset_tr = Vector2(32, -32)
+	var rotationPlayer = Vector2.from_angle(player.rotation)
+	var rotation_bl = Vector2.from_angle(player.rotation+3*PI/4)
+	var rotation_br = Vector2.from_angle(player.rotation+PI/4)
+	var rotation_tl = Vector2.from_angle(player.rotation-3*PI/4)
+	var rotation_tr = Vector2.from_angle(player.rotation-PI/4)
+	
+	# i do not understand why 46
+	var offset_bl = 46*rotation_bl
+	var offset_br = 46*rotation_br
+	var offset_tl = 46*rotation_tl
+	var offset_tr = 46*rotation_tr
+	
+	corner_bl.rotation = player.rotation
+	corner_br.rotation = player.rotation
+	corner_tl.rotation = player.rotation
+	corner_tr.rotation = player.rotation
 	
 	var position = player.global_position
 	corner_bl.global_position = position + offset_bl
