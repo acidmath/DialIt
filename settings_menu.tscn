@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8vb8n86rumjv"]
+
+[ext_resource type="Script" path="res://settings_menu.gd" id="1_4b43q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4b43q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -1.0
+offset_bottom = 421.0
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="VolumeContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/VolumeContainer"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/VolumeContainer"]
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+tick_count = 11

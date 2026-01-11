@@ -3,7 +3,7 @@ extends Node
 var menuScene = preload("res://start_menu.tscn")
 var menuSceneInstance : StartMenu
 
-var gameScene = preload("res://Main.tscn")
+var gameScene = preload("res://settings_menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +11,7 @@ func _ready() -> void:
 	add_child(menuSceneInstance)
 	
 	menuSceneInstance.start_game.connect(start_game)
+	menuSceneInstance.quit_game.connect(quit_game)
 
 func start_game():
 	remove_child(menuSceneInstance)
@@ -18,3 +19,7 @@ func start_game():
 	
 	var gameSceneInstance = gameScene.instantiate()
 	add_child(gameSceneInstance)
+	
+func quit_game():
+	print("quit")
+	get_tree().quit()
