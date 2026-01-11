@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Lander 2.0"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://GameManager.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
