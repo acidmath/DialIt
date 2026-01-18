@@ -17,6 +17,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_right = -1.0
 offset_bottom = 421.0
+grow_horizontal = 2
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -37,3 +38,6 @@ layout_mode = 2
 max_value = 10.0
 value = 10.0
 tick_count = 11
+
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="return_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/VolumeContainer/VolumeSlider" to="." method="volume_changed"]

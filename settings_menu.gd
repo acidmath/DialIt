@@ -1,6 +1,12 @@
 extends Control
+class_name SettingsMenu
 
-signal settings_return()
+func _ready() -> void:
+	var slider = self.get_node("./VBoxContainer/VolumeContainer/VolumeSlider")
+	slider.value = PlayerSettings.volume * 10
 
 func return_button_pressed():
-	emit_signal("settings_return")
+	get_tree().change_scene_to_file("res://start_menu.tscn")
+
+func volume_changed(volume : float):
+	PlayerSettings.volume = volume / 10
