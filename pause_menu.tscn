@@ -32,9 +32,9 @@ text = "Resume"
 layout_mode = 2
 text = "Restart"
 
-[node name="quit" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="main_menu" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+text = "Main Menu"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
@@ -54,5 +54,5 @@ tick_count = 11
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/main_menu" to="." method="_on_main_menu_pressed"]
 [connection signal="value_changed" from="PanelContainer/HBoxContainer/VBoxContainer2/VolumeSlider" to="." method="volume_changed"]

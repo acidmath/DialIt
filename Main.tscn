@@ -516,6 +516,7 @@ texture = ExtResource("8_i3xlp")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_ml8ns")]
+visible = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
