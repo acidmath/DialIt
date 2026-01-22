@@ -41,6 +41,7 @@ text = "Re-assign"
 
 [node name="InputReassignmentPanel" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,3 +75,5 @@ layout_mode = 2
 [node name="EscLabel" type="Label" parent="InputReassignmentPanel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press ESC to cancel reassignment."
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ThrustInput/ThrustButton" to="." method="thrust_button_pressed"]
