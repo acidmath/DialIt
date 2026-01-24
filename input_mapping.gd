@@ -2,24 +2,43 @@ extends Control
 class_name InputMappingMenu
 
 var isReassigning : bool
+var actionAssigning : String
+@onready var inputReassignmentPanel = %InputReassignmentPanel
+@onready var inputMappingInstructionsLabel = %InputMappingInstructionsLabel
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_released("esc"):
+func _input(event: InputEvent) -> void:
+	var eventKey: InputEventKey = event as InputEventKey
+	if not eventKey:
+		return
+	
+	# if the escape key is pressed, either stop reassignment or leave the page
+	if eventKey.keycode == KEY_ESCAPE:
 		if isReassigning:
-			%InputReassignmentPanel.visible = false
-			isReassigning = false
+			stop_assignment()
 		else:
 			return_to_main_menu()
+		return
+	# when in reassignment mode, take the next key press as the key to assign the action to
+	if isReassigning:
+		InputMap.action_erase_events(actionAssigning)
+		InputMap.action_add_event(actionAssigning, eventKey)
+		stop_assignment()
+
+func stop_assignment():
+	inputReassignmentPanel.visible = false
+	isReassigning = false
+	actionAssigning = ""
 
 func return_to_main_menu():
-	get_tree().change_scene_to_file("res://start_menu.tscn")
+	get_tree().change_scene_to_file("uid://dvbl5xcd3wu8h")
 
 func show_reassignment_dialog(action : String):
 	if isReassigning:
 		pass
 	isReassigning = true
-	%InputReassignmentPanel.visible = true
-	%InputMappingInstructionsLabel.text = "Please press the button you want to assign to " + action
+	actionAssigning = action
+	inputReassignmentPanel.visible = true
+	inputMappingInstructionsLabel.text = "Please press the button you want to assign to " + action
 
 func thrust_button_pressed():
 	show_reassignment_dialog("thrust")

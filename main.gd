@@ -36,10 +36,10 @@ func EmitScreenSizeChanged():
 	screenRectPrev.size.y = screenRect.size.y
 
 func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
-	var defeat_bottom_left = preload("res://player/defeat/defeat_b_l.tscn")
-	var defeat_bottom_right = preload("res://player/defeat/defeat_b_r.tscn")
-	var defeat_top_left = preload("res://player/defeat/defeat_t_l.tscn")
-	var defeat_top_right = preload("res://player/defeat/defeat_t_r.tscn")
+	var defeat_bottom_left = preload("uid://bi3q1t1q0m7ol")
+	var defeat_bottom_right = preload("uid://cmwiumpxfct75")
+	var defeat_top_left = preload("uid://bumuntnkoocct")
+	var defeat_top_right = preload("uid://1l42bqvoxywc")
 	
 	var corner_bl = defeat_bottom_left.instantiate()
 	var corner_br = defeat_bottom_right.instantiate()
@@ -53,6 +53,7 @@ func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
 	var rotation_tr = Vector2.from_angle(player.rotation-PI/4)
 	
 	# i do not understand why 46
+	# what's 64 divided by the square root of 2
 	var offset_bl = 46*rotation_bl
 	var offset_br = 46*rotation_br
 	var offset_tl = 46*rotation_tl
