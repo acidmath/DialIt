@@ -5,6 +5,16 @@ var isReassigning : bool
 var actionAssigning : String
 @onready var inputReassignmentPanel = %InputReassignmentPanel
 @onready var inputMappingInstructionsLabel = %InputMappingInstructionsLabel
+@onready var thrustValueLabel = %ThrustValueLabel
+@onready var rotateRightValueLabel = %RotateRightValueLabel
+@onready var rotateLeftValueLabel = %RotateLeftValueLabel
+
+func _ready() -> void:
+	var t = InputMap.action_get_events("thrust")[0]
+	print(t.as_text())
+	thrustValueLabel.text = InputMap.action_get_events("thrust")[0].as_text()
+	rotateRightValueLabel.text = InputMap.action_get_events("rRot")[0].as_text()
+	rotateLeftValueLabel.text = InputMap.action_get_events("lRot")[0].as_text()
 
 func _input(event: InputEvent) -> void:
 	var eventKey: InputEventKey = event as InputEventKey

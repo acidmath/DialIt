@@ -33,9 +33,40 @@ layout_mode = 2
 text = "Thrust"
 
 [node name="ThrustValueLabel" type="Label" parent="CenterContainer/VBoxContainer/ThrustInput"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ThrustButton" type="Button" parent="CenterContainer/VBoxContainer/ThrustInput"]
+layout_mode = 2
+text = "Re-assign"
+
+[node name="RotateRightInput" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RotateRightLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateRightInput"]
+layout_mode = 2
+text = "Rotate Right"
+
+[node name="RotateRightValueLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateRightInput"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RotateRightButton" type="Button" parent="CenterContainer/VBoxContainer/RotateRightInput"]
+layout_mode = 2
+text = "Re-assign"
+
+[node name="RotateLeftInput" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RotateLeftLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateLeftInput"]
+layout_mode = 2
+text = "Rotate Left"
+
+[node name="RotateLeftValueLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateLeftInput"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RotateLeftButton" type="Button" parent="CenterContainer/VBoxContainer/RotateLeftInput"]
 layout_mode = 2
 text = "Re-assign"
 
@@ -77,3 +108,5 @@ layout_mode = 2
 text = "Press ESC to cancel reassignment."
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ThrustInput/ThrustButton" to="." method="thrust_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateRightInput/RotateRightButton" to="." method="thrust_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateLeftInput/RotateLeftButton" to="." method="thrust_button_pressed"]
