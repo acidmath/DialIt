@@ -10,8 +10,6 @@ var actionAssigning : String
 @onready var rotateLeftValueLabel = %RotateLeftValueLabel
 
 func _ready() -> void:
-	var t = InputMap.action_get_events("thrust")[0]
-	print(t.as_text())
 	thrustValueLabel.text = InputMap.action_get_events("thrust")[0].as_text()
 	rotateRightValueLabel.text = InputMap.action_get_events("rRot")[0].as_text()
 	rotateLeftValueLabel.text = InputMap.action_get_events("lRot")[0].as_text()
@@ -32,12 +30,22 @@ func _input(event: InputEvent) -> void:
 	if isReassigning:
 		InputMap.action_erase_events(actionAssigning)
 		InputMap.action_add_event(actionAssigning, eventKey)
+		update_assignment_label()
 		stop_assignment()
 
 func stop_assignment():
 	inputReassignmentPanel.visible = false
 	isReassigning = false
 	actionAssigning = ""
+	
+func update_assignment_label():
+	var key = InputMap.action_get_events(actionAssigning)[0].as_text()
+	if actionAssigning=="thrust":
+		thrustValueLabel.text = key
+	elif actionAssigning=="rRot":
+		rotateRightValueLabel.text = key
+	elif actionAssigning=="lRot":
+		rotateLeftValueLabel.text = key
 
 func return_to_main_menu():
 	get_tree().change_scene_to_file("uid://dvbl5xcd3wu8h")
@@ -52,3 +60,9 @@ func show_reassignment_dialog(action : String):
 
 func thrust_button_pressed():
 	show_reassignment_dialog("thrust")
+
+func rotate_right_button_pressed():
+	show_reassignment_dialog("rRot")
+	
+func rotate_left_button_pressed():
+	show_reassignment_dialog("lRot")

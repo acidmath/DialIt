@@ -108,5 +108,5 @@ layout_mode = 2
 text = "Press ESC to cancel reassignment."
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ThrustInput/ThrustButton" to="." method="thrust_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateRightInput/RotateRightButton" to="." method="thrust_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateLeftInput/RotateLeftButton" to="." method="thrust_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateRightInput/RotateRightButton" to="." method="rotate_right_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateLeftInput/RotateLeftButton" to="." method="rotate_left_button_pressed"]
