@@ -14,59 +14,66 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6x0bj")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ThrustInput" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="ThrustLabel" type="Label" parent="CenterContainer/VBoxContainer/ThrustInput"]
+[node name="ThrustInput" type="HBoxContainer" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ThrustLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/ThrustInput"]
 layout_mode = 2
 text = "Thrust"
 
-[node name="ThrustValueLabel" type="Label" parent="CenterContainer/VBoxContainer/ThrustInput"]
+[node name="ThrustValueLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/ThrustInput"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ThrustButton" type="Button" parent="CenterContainer/VBoxContainer/ThrustInput"]
+[node name="ThrustButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/ThrustInput"]
 layout_mode = 2
 text = "Re-assign"
 
-[node name="RotateRightInput" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="RotateRightInput" type="HBoxContainer" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RotateRightLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateRightInput"]
+[node name="RotateRightLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/RotateRightInput"]
 layout_mode = 2
 text = "Rotate Right"
 
-[node name="RotateRightValueLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateRightInput"]
+[node name="RotateRightValueLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/RotateRightInput"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RotateRightButton" type="Button" parent="CenterContainer/VBoxContainer/RotateRightInput"]
+[node name="RotateRightButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/RotateRightInput"]
 layout_mode = 2
 text = "Re-assign"
 
-[node name="RotateLeftInput" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="RotateLeftInput" type="HBoxContainer" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RotateLeftLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateLeftInput"]
+[node name="RotateLeftLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/RotateLeftInput"]
 layout_mode = 2
 text = "Rotate Left"
 
-[node name="RotateLeftValueLabel" type="Label" parent="CenterContainer/VBoxContainer/RotateLeftInput"]
+[node name="RotateLeftValueLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer/RotateLeftInput"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RotateLeftButton" type="Button" parent="CenterContainer/VBoxContainer/RotateLeftInput"]
+[node name="RotateLeftButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/RotateLeftInput"]
 layout_mode = 2
 text = "Re-assign"
 
@@ -107,6 +114,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Press ESC to cancel reassignment."
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ThrustInput/ThrustButton" to="." method="thrust_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateRightInput/RotateRightButton" to="." method="rotate_right_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/RotateLeftInput/RotateLeftButton" to="." method="rotate_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="return_to_main_menu"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/ThrustInput/ThrustButton" to="." method="thrust_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/RotateRightInput/RotateRightButton" to="." method="rotate_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/RotateLeftInput/RotateLeftButton" to="." method="rotate_left_button_pressed"]

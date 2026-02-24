@@ -33,11 +33,6 @@ func _input(event: InputEvent) -> void:
 		update_assignment_label()
 		stop_assignment()
 
-func stop_assignment():
-	inputReassignmentPanel.visible = false
-	isReassigning = false
-	actionAssigning = ""
-	
 func update_assignment_label():
 	var key = InputMap.action_get_events(actionAssigning)[0].as_text()
 	if actionAssigning=="thrust":
@@ -46,6 +41,11 @@ func update_assignment_label():
 		rotateRightValueLabel.text = key
 	elif actionAssigning=="lRot":
 		rotateLeftValueLabel.text = key
+
+func stop_assignment():
+	inputReassignmentPanel.visible = false
+	isReassigning = false
+	actionAssigning = ""
 
 func return_to_main_menu():
 	get_tree().change_scene_to_file("uid://dvbl5xcd3wu8h")
