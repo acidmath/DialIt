@@ -30,6 +30,7 @@ func _input(event: InputEvent) -> void:
 	if isReassigning:
 		InputMap.action_erase_events(actionAssigning)
 		InputMap.action_add_event(actionAssigning, eventKey)
+		PlayerSettings.SaveKey(actionAssigning)
 		update_assignment_label()
 		stop_assignment()
 

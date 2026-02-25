@@ -46,7 +46,7 @@ func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
 	var corner_tl = defeat_top_left.instantiate()
 	var corner_tr = defeat_top_right.instantiate()
 	
-	var rotationPlayer = Vector2.from_angle(player.rotation)
+	var _rotationPlayer = Vector2.from_angle(player.rotation)
 	var rotation_bl = Vector2.from_angle(player.rotation+3*PI/4)
 	var rotation_br = Vector2.from_angle(player.rotation+PI/4)
 	var rotation_tl = Vector2.from_angle(player.rotation-3*PI/4)
@@ -64,11 +64,11 @@ func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
 	corner_tl.rotation = player.rotation
 	corner_tr.rotation = player.rotation
 	
-	var position = player.global_position
-	corner_bl.global_position = position + offset_bl
-	corner_br.global_position = position + offset_br
-	corner_tl.global_position = position + offset_tl
-	corner_tr.global_position = position + offset_tr
+	var player_position = player.global_position
+	corner_bl.global_position = player_position + offset_bl
+	corner_br.global_position = player_position + offset_br
+	corner_tl.global_position = player_position + offset_tl
+	corner_tr.global_position = player_position + offset_tr
 	
 	for child in player.get_children():
 		child.queue_free()
