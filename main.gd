@@ -75,6 +75,8 @@ func SpawnDefeatBodies(player : PlayerController, collision_normal : Vector2):
 	
 	player.queue_free()
 	
+	await player.tree_exited
+	
 	self.add_child(corner_bl)
 	self.add_child(corner_br)
 	self.add_child(corner_tl)
