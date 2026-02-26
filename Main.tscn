@@ -466,6 +466,24 @@ script = ExtResource("1_up563")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("RectangleShape2D_qb25u")
 
+[node name="FireSprite2D_left" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(33, -41)
+rotation = 4.71239
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tu5id")
+autoplay = "default"
+centered = false
+offset = Vector2(-35, 0)
+
+[node name="FireSprite2D_right" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(-34, -42)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_tu5id")
+autoplay = "default"
+centered = false
+offset = Vector2(-35, 0)
+
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("2_cv023")
 

@@ -16,13 +16,19 @@ var lastContactNormal : Vector2
 
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
+@onready var fire_sprite_2d_left = $FireSprite2D_left
+@onready var fire_sprite_2d_right = $FireSprite2D_right
 @onready var collision_shape = $CollisionShape2D
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("lRot"):
+	var leftEngineFiring = Input.is_action_pressed("lRot")
+	var rightEngineFiring = Input.is_action_pressed("rRot")
+	fire_sprite_2d_left.visible = leftEngineFiring
+	fire_sprite_2d_right.visible = rightEngineFiring
+	if leftEngineFiring:		
 		apply_force(Vector2.from_angle(rotation + PI) * spinForce, TopPosition.rotated(rotation))
 		print(Vector2.from_angle(rotation + PI))
-	if Input.is_action_pressed("rRot"):
+	if rightEngineFiring:
 		apply_force(Vector2.from_angle(rotation) * spinForce, TopPosition.rotated(rotation))
 		print(Vector2.from_angle(rotation))
 	if Input.is_action_pressed("thrust"):
