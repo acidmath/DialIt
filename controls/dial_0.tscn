@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cjxl6xjaff5y5"]
+
+[ext_resource type="Script" uid="uid://ccua7xbtysxu" path="res://controls/dial_0_path_2d.gd" id="1_33mgx"]
+[ext_resource type="Texture2D" uid="uid://b78fd6iebftpc" path="res://controls/handle_red.png" id="2_v6x6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5he14"]
+radius = 50.0
+
+[node name="Node2D" type="Node2D" unique_id=224537146]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1955213392]
+script = ExtResource("1_33mgx")
+
+[node name="Line2D" type="Line2D" parent="Path2D" unique_id=1755954742]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1168126169]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Path2D/PathFollow2D" unique_id=857526844]
+texture_normal = ExtResource("2_v6x6b")
+shape = SubResource("CircleShape2D_5he14")
