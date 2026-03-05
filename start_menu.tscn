@@ -36,8 +36,3 @@ text = "Controls"
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
-
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="settings_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ControlsButton" to="." method="controls_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit_button_pressed"]
