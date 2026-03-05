@@ -59,6 +59,7 @@ func _on_body_entered(body: Node2D):
 	var platform = body as LandingPlatform
 	if platform:
 		get_tree().call_deferred("reload_current_scene")
+		#throw "this is actually the win condition and should show the success menu"
 	else:
 		hasBeenDefeated = true
 		player_defeated.emit(self, lastContactNormal)

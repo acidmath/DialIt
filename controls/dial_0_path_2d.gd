@@ -1,5 +1,9 @@
-@tool # Allows the function to run in the editor
 extends Path2D
+
+@onready var button_area : Area2D = $PathFollow2D/Area2D
+@onready var button_collision_shape : CollisionShape2D = $PathFollow2D/Area2D/CollisionShape2D
+@onready var button_path : PathFollow2D = $PathFollow2D
+var update_dial_progress : bool
 
 func generate_circle_path(radius: float, points: int):
 	curve = Curve2D.new()
@@ -30,3 +34,18 @@ func _ready():
 		line_2d.points = curve.get_baked_points()
 		line_2d.width = 5.0 # Set desired width
 		line_2d.default_color = Color.WHITE # Set desired color
+	
+	button_area.mouse_entered.connect(mouse_entered_button)
+	button_area.mouse_exited.connect(mouse_exited_button)
+
+func _process(delta: float) -> void:
+	var press_down = Input.is_action_pressed("press_down")
+	if press_down and update_dial_progress:
+		button_path.progress += 1
+		button_path.move_local_x(100)
+
+func mouse_entered_button():
+	update_dial_progress = true
+
+func mouse_exited_button():
+	update_dial_progress = false
