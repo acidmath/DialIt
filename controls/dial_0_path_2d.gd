@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	var press_down = Input.is_action_pressed("press_down")
 	if press_down and update_dial_progress:
 		button_path.progress += 1
-		button_path.move_local_x(100)
+		#button_path.move_local_x(100)
 
 func mouse_entered_button():
 	update_dial_progress = true

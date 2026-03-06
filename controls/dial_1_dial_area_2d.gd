@@ -2,30 +2,31 @@ extends Area2D
 
 var update_dial_progress : bool
 var initial_mouse_position_set : bool
-var last_mouse_position : Vector2
+var last_mouse_position : Vector2 = Vector2(0, 1)
 
-#ok somehow this dial always points right at where you click 
-#i meant to make it more relative
-#but it's so perfect I'm just going to start over
+#make this one relative dude
 
 func _ready():
 	self.mouse_entered.connect(mouse_entered_button)
 	self.mouse_exited.connect(mouse_exited_button)
+	print(rotation)
 
 func _process(delta: float) -> void:
 	var press_down = Input.is_action_pressed("press_down")
 	# we want to look at where the mouse is relative to the center of the shape
 	# and then rotate the dial with updates as long as the update bool is true
 	if press_down and update_dial_progress:
-		if initial_mouse_position_set:
+		#if initial_mouse_position_set:
 			#move the dial based on the rotation from the last position to the current
-			var angle_diff = last_mouse_position.angle_to(get_local_mouse_position())
-			rotate(angle_diff)
-		else:
-			initial_mouse_position_set = true
-		last_mouse_position = get_local_mouse_position()
-	elif not press_down:
-		initial_mouse_position_set = true
+		var angle_diff = last_mouse_position.angle_to(get_local_mouse_position())
+		rotation = angle_diff
+		print(rotation)
+		#rotate(angle_diff)
+		#else:
+			#initial_mouse_position_set = true
+		#last_mouse_position = get_local_mouse_position()
+	#elif not press_down:
+		#initial_mouse_position_set = true
 
 func mouse_entered_button():
 	update_dial_progress = true

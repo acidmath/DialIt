@@ -18,6 +18,7 @@ point_count = 61
 [node name="Node2D" type="Node2D" unique_id=224537146]
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1955213392]
+position = Vector2(-226, -1)
 curve = SubResource("Curve2D_v6x6b")
 script = ExtResource("1_33mgx")
 
@@ -38,15 +39,12 @@ shape = SubResource("CircleShape2D_v6x6b")
 texture = ExtResource("2_v6x6b")
 
 [node name="Dial_Area2D" type="Area2D" parent="." unique_id=413843308]
-position = Vector2(0, 1)
 script = ExtResource("3_6c71j")
 
 [node name="Dial_CollisionShape2D" type="CollisionShape2D" parent="Dial_Area2D" unique_id=1186079699]
-position = Vector2(270, 0)
 scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_h6ehr")
 
 [node name="Dial_Sprite2D" type="Sprite2D" parent="Dial_Area2D" unique_id=940260839]
-position = Vector2(270, 0)
 scale = Vector2(10, 10)
 texture = ExtResource("4_g1u1s")
