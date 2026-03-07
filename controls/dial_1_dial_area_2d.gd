@@ -1,5 +1,7 @@
 extends Area2D
 
+signal dial_1_rotated(angle_diff : float)
+
 var update_dial_progress : bool
 var initial_mouse_position_set : bool
 var last_mouse_position : Vector2 = Vector2(0, -1)
@@ -19,13 +21,16 @@ func _process(delta: float) -> void:
 			#move the dial based on the rotation from the last position to the current
 		var angle_diff = last_mouse_position.angle_to(get_local_mouse_position())
 		rotation += angle_diff
-		print(rotation)
+		print(angle_diff)
+		emit_signal("dial_1_rotated", angle_diff)
 		#rotate(angle_diff)
 		#else:
 			#initial_mouse_position_set = true
 		#last_mouse_position = get_local_mouse_position()
-	#elif not press_down:
+	elif not press_down:
 		#initial_mouse_position_set = true
+		emit_signal("dial_1_rotated", 0)
+	
 
 func mouse_entered_button():
 	update_dial_progress = true

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dx6yqapunxjql"]
 
 [ext_resource type="Script" uid="uid://d14qq8roiy78x" path="res://controls/dial_1_dial_area_2d.gd" id="1_ffsro"]
+[ext_resource type="Script" uid="uid://djoa8l70ooutb" path="res://controls/dial_1.gd" id="1_xlujv"]
 [ext_resource type="Texture2D" uid="uid://cho2o5083tgka" path="res://controls/dial_red.png" id="4_8oxyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6ehr"]
 
 [node name="Node2D" type="Node2D" unique_id=224537146]
+script = ExtResource("1_xlujv")
 
 [node name="Dial_Area2D" type="Area2D" parent="." unique_id=413843308]
 script = ExtResource("1_ffsro")

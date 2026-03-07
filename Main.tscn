@@ -1,20 +1,21 @@
-[gd_scene load_steps=24 format=4 uid="uid://omkqitj3by8v"]
+[gd_scene format=4 uid="uid://omkqitj3by8v"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_ofygb"]
-[ext_resource type="Script" path="res://Controls.gd" id="1_up563"]
+[ext_resource type="Script" uid="uid://exq6fexera64" path="res://main.gd" id="1_ofygb"]
+[ext_resource type="Script" uid="uid://q5pdih1t7u1w" path="res://Controls.gd" id="1_up563"]
 [ext_resource type="Texture2D" uid="uid://dhtt3gq3hvmtp" path="res://player/Lander_1.png" id="2_cv023"]
-[ext_resource type="Script" path="res://player/camera_2d.gd" id="3_jmdgt"]
+[ext_resource type="Script" uid="uid://d3qp0rqgl6mh5" path="res://player/camera_2d.gd" id="3_jmdgt"]
 [ext_resource type="Texture2D" uid="uid://dosflbl4771cc" path="res://player/fireSprite.png" id="3_ohatq"]
 [ext_resource type="Texture2D" uid="uid://bi5yxjiqocynm" path="res://level/dads_first_lava_block.png" id="3_phtau"]
 [ext_resource type="AudioStream" uid="uid://cu185vlc38sq0" path="res://player/rocketShipSound.mp3" id="4_gqhyd"]
-[ext_resource type="Script" path="res://rocketShipSound.gd" id="5_36vn8"]
+[ext_resource type="Script" uid="uid://dha2lfnu1d333" path="res://rocketShipSound.gd" id="5_36vn8"]
 [ext_resource type="Texture2D" uid="uid://cbb68rlvjnmdc" path="res://level/tio_moon_2.png" id="6_4v2p2"]
-[ext_resource type="Script" path="res://Background.gd" id="8_aylwr"]
+[ext_resource type="Script" uid="uid://lmi5jjishgv8" path="res://Background.gd" id="8_aylwr"]
 [ext_resource type="Texture2D" uid="uid://dynhy4myddb03" path="res://level/earthBlue.png" id="8_i3xlp"]
-[ext_resource type="Script" path="res://platform/platform.gd" id="9_0l7w6"]
+[ext_resource type="Script" uid="uid://c1bas8hrpaimg" path="res://platform/platform.gd" id="9_0l7w6"]
 [ext_resource type="Texture2D" uid="uid://dyjwd8ufqjgyn" path="res://platform/platform.png" id="9_kahn3"]
 [ext_resource type="PackedScene" uid="uid://cwpn6p0etxg47" path="res://pause_menu.tscn" id="14_ml8ns"]
-[ext_resource type="Script" path="res://rich_text_label.gd" id="15_30bes"]
+[ext_resource type="Script" uid="uid://clcrs58pf3lga" path="res://rich_text_label.gd" id="15_30bes"]
+[ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://controls/dial_1.tscn" id="16_fpfj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -440,33 +441,20 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_n0ll6")
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node2D" unique_id=1323535010]
 script = ExtResource("1_ofygb")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-315, -560)
-ignore_rotation = false
-script = ExtResource("3_jmdgt")
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-595, -350)
-scale = Vector2(20, 5)
-texture_normal = ExtResource("3_phtau")
-shape_centered = false
-action = "thrust"
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(-315, -560)
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1508792676]
+position = Vector2(-428, -780)
 collision_layer = 2
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_up563")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=685959388]
 shape = SubResource("RectangleShape2D_qb25u")
 
-[node name="FireSprite2D_left" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="FireSprite2D_left" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=1809052174]
 position = Vector2(33, -41)
 rotation = 4.71239
 scale = Vector2(0.3, 0.3)
@@ -475,7 +463,7 @@ autoplay = "default"
 centered = false
 offset = Vector2(-35, 0)
 
-[node name="FireSprite2D_right" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="FireSprite2D_right" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=2106242531]
 position = Vector2(-34, -42)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
@@ -484,61 +472,78 @@ autoplay = "default"
 centered = false
 offset = Vector2(-35, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=821348280]
 texture = ExtResource("2_cv023")
 
-[node name="FireSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="FireSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=811191679]
 position = Vector2(0, 35)
 sprite_frames = SubResource("SpriteFrames_tu5id")
 autoplay = "default"
 centered = false
 offset = Vector2(-35, 0)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RigidBody2D"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RigidBody2D" unique_id=645139500]
 stream = ExtResource("4_gqhyd")
 autoplay = true
 script = ExtResource("5_36vn8")
 
-[node name="CameraPivot" type="Node2D" parent="RigidBody2D"]
+[node name="CameraPivot" type="Node2D" parent="RigidBody2D" unique_id=1300513119]
 position = Vector2(0, 2)
 
-[node name="Platform" type="StaticBody2D" parent="."]
+[node name="Platform" type="StaticBody2D" parent="." unique_id=618872376]
 position = Vector2(-540, -280)
 collision_mask = 0
 script = ExtResource("9_0l7w6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=575953354]
 texture = ExtResource("9_kahn3")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform" unique_id=1927569870]
 polygon = PackedVector2Array(-96, 24, -96, -24, 96, -24, 96, 24)
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Map" type="Node2D" parent="." unique_id=44116101]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Map"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Map" unique_id=1579904228]
 tile_map_data = PackedByteArray("AAD/////AAAJAAIAAAD///7/AAAJAAIAAAD+//7/AAAFAAEAAAD+////AAAJAAIAAAD9////AAAJAAIAAAD8////AAAJAAIAAAD7////AAAJAAIAAAD6////AAAJAAIAAAD5////AAAJAAIAAAD5//7/AAAJAAIAAAD6//7/AAAGAAEAAAD7//7/AAAKAAAAAAD8//7/AAAKAAAAAAD9//7/AAAKAAAAAAAAAP7/AAAJAAIAAAAAAP3/AAAJAAIAAAAAAPz/AAAFAAEAAAAAAPv/AAAEAAEAAAAAAPr/AAAAAAAAAAABAPv/AAALAAAAAAABAPz/AAAGAAEAAAABAP3/AAAJAAIAAAABAP7/AAAJAAIAAAABAP//AAAJAAIAAAABAAAAAAAJAAMAAAAAAAAAAAAJAAMAAAD//wAAAAAJAAMAAAD+/wAAAAAJAAMAAAD9/wAAAAAJAAMAAAD8/wAAAAAJAAMAAAD7/wAAAAAJAAMAAAD6/wAAAAAJAAMAAAD5/wAAAAAJAAMAAAD4//7/AAAJAAIAAAD5//3/AAAGAAEAAAD5//z/AAALAAIAAAD5//v/AAAHAAEAAAD5//r/AAAAAAAAAAD4//v/AAAIAAAAAAD4//z/AAAFAAEAAAD3//z/AAAIAAAAAAD3//3/AAAFAAEAAAD4//3/AAAJAAIAAAD2//3/AAAIAAAAAAD3//7/AAAJAAIAAAD2//7/AAAIAAEAAAD2////AAAIAAEAAAD3////AAAJAAIAAAD4////AAAJAAIAAAD4/wAAAAAJAAMAAAD3/wAAAAAJAAMAAAD2/wAAAAAIAAMAAAD///z/AAAIAAAAAAD///3/AAAFAAEAAAD+//3/AAAIAAAAAAD6//3/AAALAAAAAAACAPz/AAALAAAAAAACAP3/AAALAAIAAAACAP7/AAALAAIAAAACAP//AAALAAIAAAACAAAAAAALAAMAAAAAAP//AAAJAAIAAAA=")
 tile_set = SubResource("TileSet_6tt8j")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1781316465]
+position = Vector2(-315, -560)
+ignore_rotation = false
+script = ExtResource("3_jmdgt")
+
+[node name="Dial_1" parent="Camera2D" unique_id=224537146 instance=ExtResource("16_fpfj3")]
+unique_name_in_owner = true
+position = Vector2(-111, 180)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D" unique_id=226565593]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-595, -350)
+scale = Vector2(20, 5)
+texture_normal = ExtResource("3_phtau")
+shape_centered = false
+action = "thrust"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=68456334]
 scroll_ignore_camera_zoom = true
 
-[node name="GeneratedBackground" type="Node2D" parent="ParallaxBackground"]
+[node name="GeneratedBackground" type="Node2D" parent="ParallaxBackground" unique_id=1101413482]
 script = ExtResource("8_aylwr")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=158666387]
 motion_scale = Vector2(0, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=167740442]
 texture = ExtResource("8_i3xlp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=747671633]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_ml8ns")]
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1862729981 instance=ExtResource("14_ml8ns")]
 visible = false
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=514605837]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2" unique_id=1133101914]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

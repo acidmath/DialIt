@@ -13,6 +13,7 @@ var engineForce = 200.0
 var spinForce = 100.0
 var lastThrustDeltaUpdate = 0
 var lastContactNormal : Vector2
+var thrustFromDial = false
 
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
@@ -20,21 +21,27 @@ var lastContactNormal : Vector2
 @onready var fire_sprite_2d_right = $FireSprite2D_right
 @onready var collision_shape = $CollisionShape2D
 
+@onready var dial_1_input = %Dial_1
+
+func _ready() -> void:
+	%Dial_1.connect("dial_1_rotated", on_dial_1_rotated)
+
+func on_dial_1_rotated(angle_diff : float):
+	thrustFromDial = angle_diff != 0
+
 func _physics_process(_delta):
+	var thrustFiring = Input.is_action_pressed("thrust") or thrustFromDial
 	var leftEngineFiring = Input.is_action_pressed("lRot")
 	var rightEngineFiring = Input.is_action_pressed("rRot")
 	fire_sprite_2d_left.visible = leftEngineFiring
 	fire_sprite_2d_right.visible = rightEngineFiring
-	if leftEngineFiring:		
-		apply_force(Vector2.from_angle(rotation + PI) * spinForce, TopPosition.rotated(rotation))
-		print(Vector2.from_angle(rotation + PI))
+	if leftEngineFiring:
+		apply_force(Vector2.from_angle(rotation + PI) * spinForce, TopPosition.rotated(rotation))		
 	if rightEngineFiring:
-		apply_force(Vector2.from_angle(rotation) * spinForce, TopPosition.rotated(rotation))
-		print(Vector2.from_angle(rotation))
-	if Input.is_action_pressed("thrust"):
+		apply_force(Vector2.from_angle(rotation) * spinForce, TopPosition.rotated(rotation))		
+	if thrustFiring:
 		if engineForceStep < ENGINE_FORCE_STEP_MAX:
 			engineForceStep += 1
-		
 		apply_central_force(Vector2.from_angle(rotation - PI/2) * engineForce * engineForceStep)
 	elif engineForceStep > 0:
 		engineForceStep -= 1

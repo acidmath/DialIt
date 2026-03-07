@@ -76,6 +76,11 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="Level"
 2d_physics/layer_2="Player"
 
+[physics]
+
+2d/default_gravity=90.0
+
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
