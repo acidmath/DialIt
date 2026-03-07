@@ -4,13 +4,11 @@ var update_dial_progress : bool
 var initial_mouse_position_set : bool
 var last_mouse_position : Vector2 = Vector2(0, -1)
 
-#make this one relative dude
-#alright this one just follows the input
+#this one just follows the input
 
 func _ready():
 	self.mouse_entered.connect(mouse_entered_button)
 	self.mouse_exited.connect(mouse_exited_button)
-	print(rotation)
 
 func _process(delta: float) -> void:
 	var press_down = Input.is_action_pressed("press_down")
