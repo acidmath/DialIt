@@ -4,9 +4,7 @@ var update_dial_progress : bool
 var initial_mouse_position_set : bool
 var last_mouse_position : Vector2
 
-#ok somehow this dial always points right at where you click 
-#i meant to make it more relative
-#but it's so perfect I'm just going to start over
+#this is the relative dial
 
 func _ready():
 	self.mouse_entered.connect(mouse_entered_button)
@@ -25,10 +23,11 @@ func _process(delta: float) -> void:
 			initial_mouse_position_set = true
 		last_mouse_position = get_local_mouse_position()
 	elif not press_down:
-		initial_mouse_position_set = true
+		initial_mouse_position_set = false
 
 func mouse_entered_button():
 	update_dial_progress = true
 
 func mouse_exited_button():
 	update_dial_progress = false
+	initial_mouse_position_set = false
