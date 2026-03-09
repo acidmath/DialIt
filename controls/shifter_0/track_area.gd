@@ -12,7 +12,6 @@ func _ready() -> void:
 	drawn_shape.polygon = collision_polygon
 
 func _mouse_enter() -> void:
-	print("am i crazy")
 	mouse_entered_track.emit()
 
 func  _mouse_exit() -> void:

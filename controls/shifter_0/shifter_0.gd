@@ -5,6 +5,7 @@ extends Node2D
 
 var track_area_entered : bool
 var grab_area_entered : bool
+var last_mouse_position : Vector2
 
 func _ready() -> void:
 	track_area.mouse_entered_track.connect(on_track_area_entered)
@@ -14,20 +15,20 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if track_area_entered and grab_area_entered and Input.is_action_pressed("press_down"):
-		grab_area.global_position = get_global_mouse_position()
+		var mouse_diff = get_local_mouse_position() - last_mouse_position
+		grab_area.translate(mouse_diff)
+		last_mouse_position = get_local_mouse_position()
 
 func on_track_area_entered():
+	last_mouse_position = get_local_mouse_position()
 	track_area_entered = true
-	print("track entered")
 
 func on_track_area_exited():
 	track_area_entered = false
-	print("track exited")
 
 func on_grab_area_entered():
+	last_mouse_position = get_local_mouse_position()
 	grab_area_entered = true
-	print("grab entered")
 
 func on_grab_area_exited():
 	grab_area_entered = false
-	print("grab exited")
