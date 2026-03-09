@@ -27,7 +27,6 @@ texture = ExtResource("2_4adw8")
 script = ExtResource("1_gespa")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrackArea" unique_id=29374156]
-top_level = true
 build_mode = 1
 polygon = PackedVector2Array(0, 0, 50, 0, 50, -200, 100, -200, 100, 50, -100, 50, -100, -200, -50, -200, -50, 0)
 
