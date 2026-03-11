@@ -16,6 +16,8 @@ func _ready() -> void:
 	grab_area.mouse_exited_grab.connect(on_grab_area_exited)
 
 func _process(_delta: float) -> void:
+	#this should move to an entirely different script
+	print(Input.get_accelerometer())
 	if track_area_entered and grab_area_entered and Input.is_action_pressed("press_down"):
 		if !initial_shift:
 			var mouse_diff = curr_mouse_position - last_mouse_position
