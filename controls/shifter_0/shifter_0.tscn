@@ -5,6 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://b78fd6iebftpc" path="res://controls/handle_red.png" id="2_4adw8"]
 [ext_resource type="Script" uid="uid://bvhdr5vp24s86" path="res://controls/shifter_0/grab_area.gd" id="2_jdxie"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lguiq"]
+size = Vector2(200, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07g8j"]
+size = Vector2(50, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yps3j"]
+size = Vector2(50, 200)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdxie"]
 
 [node name="Shifter0" type="Node2D" unique_id=566806642]
@@ -15,9 +24,22 @@ script = ExtResource("1_gespa")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrackArea" unique_id=29374156]
 polygon = PackedVector2Array(0, 0, 50, 0, 50, -200, 100, -200, 100, 50, -100, 50, -100, -200, -50, -200, -50, 0)
+disabled = true
 
 [node name="Polygon2D" type="Polygon2D" parent="TrackArea/CollisionPolygon2D" unique_id=240601462]
 color = Color(0.2410529, 0.4899804, 0.58812386, 1)
+
+[node name="CollisionShape2D_Bottom" type="CollisionShape2D" parent="TrackArea" unique_id=605461409]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_lguiq")
+
+[node name="CollisionShape2D_Left" type="CollisionShape2D" parent="TrackArea" unique_id=711313897]
+position = Vector2(-75, -100)
+shape = SubResource("RectangleShape2D_07g8j")
+
+[node name="CollisionShape2D_Right" type="CollisionShape2D" parent="TrackArea" unique_id=1335873651]
+position = Vector2(75, -100)
+shape = SubResource("RectangleShape2D_yps3j")
 
 [node name="GrabArea" type="Area2D" parent="." unique_id=807283857]
 script = ExtResource("2_jdxie")
