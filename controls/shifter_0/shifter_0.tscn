@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dunlwuua34xnv" path="res://controls/shifter_0/shifter_0.gd" id="1_lguiq"]
 [ext_resource type="Texture2D" uid="uid://b78fd6iebftpc" path="res://controls/handle_red.png" id="2_4adw8"]
 [ext_resource type="Script" uid="uid://bvhdr5vp24s86" path="res://controls/shifter_0/grab_area.gd" id="2_jdxie"]
+[ext_resource type="Texture2D" uid="uid://buhxwgqss8gy7" path="res://controls/shifter_0/track_sprite.png" id="3_07g8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lguiq"]
 size = Vector2(200, 50)
@@ -15,6 +16,7 @@ size = Vector2(50, 200)
 size = Vector2(50, 200)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdxie"]
+radius = 20.0
 
 [node name="Shifter0" type="Node2D" unique_id=566806642]
 script = ExtResource("1_lguiq")
@@ -22,12 +24,9 @@ script = ExtResource("1_lguiq")
 [node name="TrackArea" type="Area2D" parent="." unique_id=586461469]
 script = ExtResource("1_gespa")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrackArea" unique_id=29374156]
-polygon = PackedVector2Array(0, 0, 50, 0, 50, -200, 100, -200, 100, 50, -100, 50, -100, -200, -50, -200, -50, 0)
-disabled = true
-
-[node name="Polygon2D" type="Polygon2D" parent="TrackArea/CollisionPolygon2D" unique_id=240601462]
-color = Color(0.2410529, 0.4899804, 0.58812386, 1)
+[node name="Sprite2D" type="Sprite2D" parent="TrackArea" unique_id=1094112557]
+position = Vector2(0, -75)
+texture = ExtResource("3_07g8j")
 
 [node name="CollisionShape2D_Bottom" type="CollisionShape2D" parent="TrackArea" unique_id=605461409]
 position = Vector2(0, 25)
@@ -46,8 +45,8 @@ script = ExtResource("2_jdxie")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea" unique_id=1715065210]
 position = Vector2(0, 25)
-scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_jdxie")
 
 [node name="Sprite2D" type="Sprite2D" parent="GrabArea/CollisionShape2D" unique_id=425834005]
+scale = Vector2(2, 2)
 texture = ExtResource("2_4adw8")
