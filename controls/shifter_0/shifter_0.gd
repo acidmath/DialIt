@@ -8,6 +8,7 @@ var grab_area_entered : bool
 var initial_shift : bool
 var curr_mouse_position : Vector2
 var last_mouse_position : Vector2
+var last_grab_position : Vector2
 
 func _ready() -> void:
 	track_area.mouse_entered_track.connect(on_track_area_entered)
@@ -17,17 +18,22 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	#this should move to an entirely different script
-	print(Input.get_accelerometer())
+	#print(Input.get_accelerometer())
 	if track_area_entered and grab_area_entered and Input.is_action_pressed("press_down"):
 		if !initial_shift:
+			#print("moving shifter")
 			var mouse_diff = curr_mouse_position - last_mouse_position
 			grab_area.translate(mouse_diff)
 		else:
+			print("setting initial position")
 			initial_shift = false
+			last_grab_position = grab_area.position
 		last_mouse_position = curr_mouse_position
 
 func _input(event: InputEvent) -> void:
 	
+	# when there is an input event that is moving the input position
+	# we'll save it for the processing function
 	var screen_touch_event : InputEventScreenTouch = event as InputEventScreenTouch
 	if screen_touch_event:
 		curr_mouse_position = screen_touch_event.position
@@ -36,9 +42,15 @@ func _input(event: InputEvent) -> void:
 	if screen_drag_event:
 		curr_mouse_position = screen_drag_event.position
 		return
-	var mouse_event : InputEventMouse = event as InputEventMouse
-	if mouse_event:
-		curr_mouse_position = mouse_event.position
+	var mouse_motion_event : InputEventMouseMotion = event as InputEventMouseMotion
+	if mouse_motion_event:
+		curr_mouse_position = mouse_motion_event.position
+		return
+	# when the press down input is released, we'll reset the initial position
+	var mouse_button_event : InputEventMouseButton = event as InputEventMouseButton
+	if mouse_button_event and !mouse_button_event.pressed:
+		initial_shift = true
+		check_grab_area_position()
 		return
 
 func on_track_area_entered():
@@ -54,3 +66,8 @@ func on_grab_area_entered():
 
 func on_grab_area_exited():
 	grab_area_entered = false
+	
+func check_grab_area_position():
+	#grab_area.position = last_grab_position
+	#track_area.collision_shape.BUILD_SOLIDS
+	pass
