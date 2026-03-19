@@ -23,6 +23,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if grab_out_of_bounds:
 		grab_area.position = last_good_grab_position
+		grab_out_of_bounds = false
 		return
 	#this should move to an entirely different script
 	#print(Input.get_accelerometer())
@@ -50,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	var query_left = PhysicsRayQueryParameters2D.create(grab_area_left, Vector2.ZERO)
 	var query_top = PhysicsRayQueryParameters2D.create(grab_area_top, Vector2.ZERO)
 	var query_right = PhysicsRayQueryParameters2D.create(grab_area_right, Vector2.ZERO)
-	var query_bottom = PhysicsRayQueryParameters2D.create(grab_area_bottom, Vector2.ZERO)
+	var query_bottom = PhysicsRayQueryParameters2D.create(grab_area_bottom, Vector2.INF)
 	query_left.hit_from_inside = true
 	query_top.hit_from_inside = true
 	query_right.hit_from_inside = true

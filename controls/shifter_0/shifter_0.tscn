@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_lguiq")
 [node name="CollisionShape2D_Left" type="CollisionShape2D" parent="TrackArea" unique_id=711313897]
 position = Vector2(-75, -100)
 shape = SubResource("RectangleShape2D_07g8j")
+disabled = true
 
 [node name="CollisionShape2D_Right" type="CollisionShape2D" parent="TrackArea" unique_id=1335873651]
 position = Vector2(75, -100)
