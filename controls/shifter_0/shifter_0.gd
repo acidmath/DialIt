@@ -15,14 +15,8 @@ func _ready() -> void:
 	track_area.mouse_exited_track.connect(on_track_area_exited)
 	grab_area.mouse_entered_grab.connect(on_grab_area_entered)
 	grab_area.mouse_exited_grab.connect(on_grab_area_exited)
-	for point in track_area.collision_shape.polygon:
-		print(point)
 
 func _process(_delta: float) -> void:
-	#if grab_out_of_bounds:
-		#grab_area.position = last_good_grab_position
-		#grab_out_of_bounds = false
-		#return
 	#this should move to an entirely different script
 	#print(Input.get_accelerometer())
 	if track_area_entered and grab_area_entered and Input.is_action_pressed("press_down"):
@@ -47,8 +41,7 @@ func check_grab_translation(mouse_diff : Vector2) -> bool:
 	var left_in = Geometry2D.is_point_in_polygon(translated_grab_area_left, track_area_polygon)
 	var top_in = Geometry2D.is_point_in_polygon(translated_grab_area_top, track_area_polygon)
 	var right_in = Geometry2D.is_point_in_polygon(translated_grab_area_right, track_area_polygon)
-	var bottom_in = Geometry2D.is_point_in_polygon(translated_grab_area_bottom, track_area_polygon)
-	print(left_in, " ", top_in, " ", right_in, " ", bottom_in)
+	var bottom_in = Geometry2D.is_point_in_polygon(translated_grab_area_bottom, track_area_polygon)	
 	return left_in and top_in and right_in and bottom_in
 
 func _input(event: InputEvent) -> void:
