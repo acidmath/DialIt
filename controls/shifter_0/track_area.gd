@@ -4,7 +4,7 @@ class_name TrackArea
 signal mouse_entered_track
 signal mouse_exited_track
 
-#@onready var collision_shape : CollisionPolygon2D = $CollisionPolygon2D
+@onready var collision_shape : CollisionPolygon2D = $CollisionPolygon2D
 #@onready var drawn_shape : Polygon2D = $CollisionPolygon2D/Polygon2D
 
 func _ready() -> void:
