@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cjvybbc86a63f"]
+
+[ext_resource type="Texture2D" uid="uid://cb0fo5e72y528" path="res://controls/shifter_2/track_sprite.png" id="1_peldf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ne8k5"]
+a = Vector2(73, -190)
+b = Vector2(73, 111)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w21me"]
+a = Vector2(73, -190)
+b = Vector2(153, -190)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ak8r7"]
+a = Vector2(153, -190)
+b = Vector2(153, 190)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_em37n"]
+a = Vector2(153, 190)
+b = Vector2(-153, 190)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r23kc"]
+a = Vector2(-152, 190)
+b = Vector2(-152, -190)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hxb4t"]
+a = Vector2(-152, -190)
+b = Vector2(-74, -190)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lh0gj"]
+a = Vector2(-74, -190)
+b = Vector2(-74, 111)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dweke"]
+a = Vector2(-74, 111)
+b = Vector2(74, 111)
+
+[node name="Shifter2" type="Node2D" unique_id=775291380]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=743622889]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=670579354]
+texture = ExtResource("1_peldf")
+
+[node name="CollisionShape_RightFork_Left" type="CollisionShape2D" parent="Area2D" unique_id=1839388803]
+shape = SubResource("SegmentShape2D_ne8k5")
+
+[node name="CollisionShape_RightFork_Top" type="CollisionShape2D" parent="Area2D" unique_id=799063536]
+shape = SubResource("SegmentShape2D_w21me")
+
+[node name="CollisionShape_RightFork_Right" type="CollisionShape2D" parent="Area2D" unique_id=765419084]
+shape = SubResource("SegmentShape2D_ak8r7")
+
+[node name="CollisionShape_Bottom" type="CollisionShape2D" parent="Area2D" unique_id=628757159]
+shape = SubResource("SegmentShape2D_em37n")
+
+[node name="CollisionShape_LeftFork_Left" type="CollisionShape2D" parent="Area2D" unique_id=2129044451]
+shape = SubResource("SegmentShape2D_r23kc")
+
+[node name="CollisionShape_LeftFork_Top" type="CollisionShape2D" parent="Area2D" unique_id=1607691779]
+shape = SubResource("SegmentShape2D_hxb4t")
+
+[node name="CollisionShape_LeftFork_Right" type="CollisionShape2D" parent="Area2D" unique_id=1267091174]
+shape = SubResource("SegmentShape2D_lh0gj")
+
+[node name="CollisionShape_Top" type="CollisionShape2D" parent="Area2D" unique_id=2085116430]
+shape = SubResource("SegmentShape2D_dweke")
