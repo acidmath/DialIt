@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c0a37m0n562ry" path="res://controls/shifter_1/track_area.gd" id="2_vfxl3"]
 [ext_resource type="Texture2D" uid="uid://cu713yk268q3p" path="res://controls/shifter_1/track_sprite-2x.png" id="3_6f8rf"]
 [ext_resource type="Script" uid="uid://c1610fsudfgrm" path="res://controls/shifter_1/grab_area.gd" id="4_q6lib"]
-[ext_resource type="Texture2D" uid="uid://bkxw246jn1wdi" path="res://controls/shifter_1/grab_sprite-2x.png" id="5_wyyd8"]
+[ext_resource type="Texture2D" uid="uid://bkxw246jn1wdi" path="res://controls/shifter_2/grab_sprite-2x.png" id="5_wyyd8"]
 [ext_resource type="Texture2D" uid="uid://7aijthy1u8n" path="res://controls/shifter_1/engage_sprite-2x.png" id="6_vfxl3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdxie"]
