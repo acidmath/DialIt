@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cjvybbc86a63f"]
 
+[ext_resource type="Script" uid="uid://dr5qff0obpmab" path="res://controls/shifter_2/shifter_2.gd" id="1_ak8r7"]
 [ext_resource type="Texture2D" uid="uid://cb0fo5e72y528" path="res://controls/shifter_2/track_sprite.png" id="1_peldf"]
 [ext_resource type="Texture2D" uid="uid://bkxw246jn1wdi" path="res://controls/shifter_2/grab_sprite-2x.png" id="2_ne8k5"]
+[ext_resource type="Script" uid="uid://ck85e84o2ajeq" path="res://controls/shifter_2/shift_knob.gd" id="2_w21me"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ne8k5"]
 a = Vector2(73, -190)
@@ -39,6 +41,7 @@ b = Vector2(74, 111)
 radius = 32.0
 
 [node name="Shifter2" type="Node2D" unique_id=775291380]
+script = ExtResource("1_ak8r7")
 
 [node name="ShiftTrack" type="StaticBody2D" parent="." unique_id=1272891943]
 collision_layer = 4
@@ -72,9 +75,10 @@ shape = SubResource("SegmentShape2D_lh0gj")
 shape = SubResource("SegmentShape2D_dweke")
 
 [node name="ShiftKnob" type="RigidBody2D" parent="." unique_id=1383306915]
-position = Vector2(0, 150)
+position = Vector2(4, 153)
 collision_layer = 8
 collision_mask = 4
+script = ExtResource("2_w21me")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShiftKnob" unique_id=751055443]
 texture = ExtResource("2_ne8k5")

@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cwpn6p0etxg47" path="res://pause_menu.tscn" id="14_ml8ns"]
 [ext_resource type="Script" uid="uid://clcrs58pf3lga" path="res://rich_text_label.gd" id="15_30bes"]
 [ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://controls/dial_1.tscn" id="16_fpfj3"]
+[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://controls/shifter_2/shifter_2.tscn" id="17_sc1dx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -553,6 +554,9 @@ offset_right = 2.0
 offset_bottom = 85.0
 grow_horizontal = 0
 script = ExtResource("15_30bes")
+
+[node name="Shifter2" parent="." unique_id=775291380 instance=ExtResource("17_sc1dx")]
+position = Vector2(-767, -688)
 
 [connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

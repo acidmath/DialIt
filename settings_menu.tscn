@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://bru1sgf1mc5ss" path="res://settings_menu.gd" id="1_4b43q"]
 [ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://controls/dial_0.tscn" id="2_0cmel"]
 [ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://controls/dial_1.tscn" id="3_mlw3h"]
-[ext_resource type="PackedScene" uid="uid://b8iwt8fg4fgo6" path="res://controls/dial_2.tscn" id="4_d0eu6"]
-[ext_resource type="PackedScene" uid="uid://b87pylka26r6b" path="res://controls/shifter_1/shifter_1.tscn" id="5_fiqec"]
+[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://controls/shifter_2/shifter_2.tscn" id="6_h437d"]
 
 [node name="Control" type="Control" unique_id=1813169787]
 layout_mode = 3
@@ -45,16 +44,13 @@ value = 10.0
 tick_count = 11
 
 [node name="Node2D" parent="VBoxContainer" unique_id=224537146 instance=ExtResource("2_0cmel")]
-position = Vector2(570, 508)
+position = Vector2(1139, 547)
 
 [node name="Node2D2" parent="VBoxContainer" unique_id=1582228804 instance=ExtResource("3_mlw3h")]
-position = Vector2(889, 377)
+position = Vector2(1132, 198)
 
-[node name="Dial2" parent="VBoxContainer" unique_id=1783228402 instance=ExtResource("4_d0eu6")]
-position = Vector2(700, 249)
-
-[node name="Shifter1" parent="VBoxContainer" unique_id=566806642 instance=ExtResource("5_fiqec")]
-position = Vector2(250, 499)
+[node name="Shifter2" parent="." unique_id=775291380 instance=ExtResource("6_h437d")]
+position = Vector2(217, 448)
 
 [connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="return_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/VolumeContainer/VolumeSlider" to="." method="volume_changed"]
