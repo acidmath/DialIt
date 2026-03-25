@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cb0fo5e72y528" path="res://controls/shifter_2/track_sprite.png" id="1_peldf"]
 [ext_resource type="Texture2D" uid="uid://bkxw246jn1wdi" path="res://controls/shifter_2/grab_sprite-2x.png" id="2_ne8k5"]
 [ext_resource type="Script" uid="uid://ck85e84o2ajeq" path="res://controls/shifter_2/shift_knob.gd" id="2_w21me"]
+[ext_resource type="Script" uid="uid://c7n7aqbsyalkc" path="res://controls/shifter_2/shifter_construct.gd" id="3_em37n"]
+[ext_resource type="Script" uid="uid://buxdjb752dltm" path="res://controls/shifter_2/engage_area_left_fork.gd" id="4_r23kc"]
+[ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://controls/dial_0.tscn" id="5_em37n"]
+[ext_resource type="Script" uid="uid://b75qfeorhqfy2" path="res://controls/shifter_2/engage_area_right_fork.gd" id="5_hxb4t"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ne8k5"]
 a = Vector2(73, -190)
@@ -37,51 +41,78 @@ b = Vector2(-74, 111)
 a = Vector2(-74, 111)
 b = Vector2(74, 111)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxb4t"]
+size = Vector2(80, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh0gj"]
+size = Vector2(80, 20)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w21me"]
 radius = 32.0
 
 [node name="Shifter2" type="Node2D" unique_id=775291380]
 script = ExtResource("1_ak8r7")
 
-[node name="ShiftTrack" type="StaticBody2D" parent="." unique_id=1272891943]
+[node name="ShifterDial" parent="." unique_id=224537146 instance=ExtResource("5_em37n")]
+position = Vector2(0, -350)
+
+[node name="ShifterConstruct" type="Node2D" parent="." unique_id=1605787719]
+script = ExtResource("3_em37n")
+
+[node name="ShiftTrack" type="StaticBody2D" parent="ShifterConstruct" unique_id=1272891943]
 collision_layer = 4
 collision_mask = 8
 
-[node name="Sprite2D" type="Sprite2D" parent="ShiftTrack" unique_id=670579354]
+[node name="Sprite2D" type="Sprite2D" parent="ShifterConstruct/ShiftTrack" unique_id=670579354]
 texture = ExtResource("1_peldf")
 
-[node name="CollisionShape_RightFork_Left" type="CollisionShape2D" parent="ShiftTrack" unique_id=1839388803]
+[node name="CollisionShape_RightFork_Left" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=1839388803]
 shape = SubResource("SegmentShape2D_ne8k5")
 
-[node name="CollisionShape_RightFork_Top" type="CollisionShape2D" parent="ShiftTrack" unique_id=799063536]
+[node name="CollisionShape_RightFork_Top" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=799063536]
 shape = SubResource("SegmentShape2D_w21me")
 
-[node name="CollisionShape_RightFork_Right" type="CollisionShape2D" parent="ShiftTrack" unique_id=765419084]
+[node name="CollisionShape_RightFork_Right" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=765419084]
 shape = SubResource("SegmentShape2D_ak8r7")
 
-[node name="CollisionShape_Bottom" type="CollisionShape2D" parent="ShiftTrack" unique_id=628757159]
+[node name="CollisionShape_Bottom" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=628757159]
 shape = SubResource("SegmentShape2D_em37n")
 
-[node name="CollisionShape_LeftFork_Left" type="CollisionShape2D" parent="ShiftTrack" unique_id=2129044451]
+[node name="CollisionShape_LeftFork_Left" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=2129044451]
 shape = SubResource("SegmentShape2D_r23kc")
 
-[node name="CollisionShape_LeftFork_Top" type="CollisionShape2D" parent="ShiftTrack" unique_id=1607691779]
+[node name="CollisionShape_LeftFork_Top" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=1607691779]
 shape = SubResource("SegmentShape2D_hxb4t")
 
-[node name="CollisionShape_LeftFork_Right" type="CollisionShape2D" parent="ShiftTrack" unique_id=1267091174]
+[node name="CollisionShape_LeftFork_Right" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=1267091174]
 shape = SubResource("SegmentShape2D_lh0gj")
 
-[node name="CollisionShape_Top" type="CollisionShape2D" parent="ShiftTrack" unique_id=2085116430]
+[node name="CollisionShape_Top" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack" unique_id=2085116430]
 shape = SubResource("SegmentShape2D_dweke")
 
-[node name="ShiftKnob" type="RigidBody2D" parent="." unique_id=1383306915]
+[node name="EngageArea_LeftFork" type="Area2D" parent="ShifterConstruct/ShiftTrack" unique_id=791948232]
+position = Vector2(-113, -180)
+collision_mask = 8
+script = ExtResource("4_r23kc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack/EngageArea_LeftFork" unique_id=1011952854]
+shape = SubResource("RectangleShape2D_hxb4t")
+
+[node name="EngageArea_RightFork" type="Area2D" parent="ShifterConstruct/ShiftTrack" unique_id=183302707]
+position = Vector2(113, -180)
+script = ExtResource("5_hxb4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShifterConstruct/ShiftTrack/EngageArea_RightFork" unique_id=1315211567]
+shape = SubResource("RectangleShape2D_lh0gj")
+
+[node name="ShiftKnob" type="RigidBody2D" parent="ShifterConstruct" unique_id=1383306915]
 position = Vector2(4, 153)
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("2_w21me")
 
-[node name="Sprite2D" type="Sprite2D" parent="ShiftKnob" unique_id=751055443]
+[node name="Sprite2D" type="Sprite2D" parent="ShifterConstruct/ShiftKnob" unique_id=751055443]
 texture = ExtResource("2_ne8k5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShiftKnob" unique_id=352783572]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShifterConstruct/ShiftKnob" unique_id=352783572]
 shape = SubResource("CircleShape2D_w21me")

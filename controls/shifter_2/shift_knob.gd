@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name ShiftKnob
+
 var is_first_click : bool = true
 var last_mouse_position : Vector2
 var curr_mouse_position : Vector2
@@ -14,7 +16,8 @@ func _physics_process(delta: float) -> void:
 	if is_first_click:
 		is_first_click = false
 	else:
-		move_shift_knob()
+		#move_shift_knob()
+		pass
 	last_mouse_position = curr_mouse_position
 
 func move_shift_knob() -> void:

@@ -27,7 +27,7 @@ func _ready() -> void:
 	%Dial_1.connect("dial_1_rotated", on_dial_1_rotated)
 
 func on_dial_1_rotated(angle_diff : float):
-	thrustFromDial = angle_diff != 0
+	thrustFromDial = angle_diff/10 != 0
 
 func _physics_process(_delta):
 	var thrustFiring = Input.is_action_pressed("thrust") or thrustFromDial
