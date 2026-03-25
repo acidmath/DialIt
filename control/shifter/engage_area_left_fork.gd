@@ -1,7 +1,8 @@
 extends Area2D
+class_name EngageAreaLeft
 
-signal engage_area_right_fork_entered
-signal engage_area_right_fork_exited
+signal engage_area_left_fork_entered
+signal engage_area_left_fork_exited
 
 func _ready() -> void:
 	self.connect("body_entered", on_body_entered )
@@ -10,9 +11,9 @@ func _ready() -> void:
 func on_body_entered(body : Node2D):
 	var shift_knob = body as ShiftKnob
 	if shift_knob:
-		engage_area_right_fork_entered.emit()
+		engage_area_left_fork_entered.emit()
 
 func on_body_exited(body : Node2D):
 	var shift_knob = body as ShiftKnob
 	if shift_knob:
-		engage_area_right_fork_exited.emit()
+		engage_area_left_fork_exited.emit()

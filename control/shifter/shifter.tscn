@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cjvybbc86a63f"]
 
-[ext_resource type="Script" uid="uid://dr5qff0obpmab" path="res://controls/shifter/shifter.gd" id="1_ak8r7"]
-[ext_resource type="Texture2D" uid="uid://cb0fo5e72y528" path="res://controls/shifter/track_sprite.png" id="1_peldf"]
-[ext_resource type="Texture2D" uid="uid://bkxw246jn1wdi" path="res://controls/shifter/grab_sprite-2x.png" id="2_ne8k5"]
-[ext_resource type="Script" uid="uid://ck85e84o2ajeq" path="res://controls/shifter/shift_knob.gd" id="2_w21me"]
-[ext_resource type="Script" uid="uid://c7n7aqbsyalkc" path="res://controls/shifter/shifter_construct.gd" id="3_em37n"]
-[ext_resource type="Script" uid="uid://buxdjb752dltm" path="res://controls/shifter/engage_area_left_fork.gd" id="4_r23kc"]
-[ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://controls/dial_relative/dial_0.tscn" id="5_em37n"]
-[ext_resource type="Script" uid="uid://b75qfeorhqfy2" path="res://controls/shifter/engage_area_right_fork.gd" id="5_hxb4t"]
+[ext_resource type="Script" uid="uid://dr5qff0obpmab" path="res://control/shifter/shifter.gd" id="1_ak8r7"]
+[ext_resource type="Texture2D" uid="uid://cb0fo5e72y528" path="res://control/shifter/track_sprite.png" id="1_peldf"]
+[ext_resource type="Texture2D" uid="uid://bkxw246jn1wdi" path="res://control/shifter/grab_sprite-2x.png" id="2_ne8k5"]
+[ext_resource type="Script" uid="uid://ck85e84o2ajeq" path="res://control/shifter/shift_knob.gd" id="2_w21me"]
+[ext_resource type="Script" uid="uid://c7n7aqbsyalkc" path="res://control/shifter/shifter_construct.gd" id="3_em37n"]
+[ext_resource type="Script" uid="uid://buxdjb752dltm" path="res://control/shifter/engage_area_left_fork.gd" id="4_r23kc"]
+[ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://control/dial_relative/dial_relative.tscn" id="5_em37n"]
+[ext_resource type="Script" uid="uid://b75qfeorhqfy2" path="res://control/shifter/engage_area_right_fork.gd" id="5_hxb4t"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ne8k5"]
 a = Vector2(73, -190)
@@ -106,7 +106,7 @@ script = ExtResource("5_hxb4t")
 shape = SubResource("RectangleShape2D_lh0gj")
 
 [node name="ShiftKnob" type="RigidBody2D" parent="ShifterConstruct" unique_id=1383306915]
-position = Vector2(4, 153)
+position = Vector2(0, 153)
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("2_w21me")

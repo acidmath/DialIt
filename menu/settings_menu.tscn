@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b8vb8n86rumjv"]
 
 [ext_resource type="Script" uid="uid://bru1sgf1mc5ss" path="res://menu/settings_menu.gd" id="1_4b43q"]
-[ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://controls/dial_relative/dial_0.tscn" id="2_0cmel"]
-[ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://controls/dial_absolute/dial_1.tscn" id="3_mlw3h"]
-[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://controls/shifter/shifter.tscn" id="6_h437d"]
+[ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://control/dial_relative/dial_relative.tscn" id="2_0cmel"]
+[ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://control/dial_absolute/dial_absolute.tscn" id="3_mlw3h"]
+[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://control/shifter/shifter.tscn" id="6_h437d"]
 
 [node name="Control" type="Control" unique_id=1813169787]
 layout_mode = 3

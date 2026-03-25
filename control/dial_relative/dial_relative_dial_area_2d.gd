@@ -1,14 +1,12 @@
 extends Area2D
 
-signal dial_1_rotated(angle_diff : float)
-
-const snap_step : Vector2 = Vector2(0.5, 0.5)
+signal dial_rotated(angle_diff : float)
 
 var update_dial_progress : bool
-var last_rotation : float
-var last_mouse_position : Vector2 = Vector2(0, -1)
+var initial_mouse_position_set : bool
+var last_mouse_position : Vector2
 
-#this one just follows the input
+#this is the relative dial
 
 func _ready():
 	self.mouse_entered.connect(mouse_entered_button)
@@ -19,17 +17,20 @@ func _process(_delta: float) -> void:
 	# we want to look at where the mouse is relative to the center of the shape
 	# and then rotate the dial with updates as long as the update bool is true
 	if press_down and update_dial_progress:
-		var snapped_mouse_position = get_local_mouse_position().snapped(snap_step)
-		var angle_diff = last_mouse_position.angle_to(snapped_mouse_position)
-		rotation += angle_diff
-		rotation = snapped(rotation, PI/8)
-		emit_signal("dial_1_rotated", last_rotation - rotation)
-		last_rotation = rotation
+		if initial_mouse_position_set:
+			#move the dial based on the rotation from the last position to the current
+			var angle_diff = last_mouse_position.angle_to(get_local_mouse_position())
+			rotate(angle_diff)
+			dial_rotated.emit(angle_diff)
+		else:
+			initial_mouse_position_set = true
+		last_mouse_position = get_local_mouse_position()
 	elif not press_down:
-		emit_signal("dial_1_rotated", 0)
+		initial_mouse_position_set = false
 
 func mouse_entered_button():
 	update_dial_progress = true
 
 func mouse_exited_button():
 	update_dial_progress = false
+	initial_mouse_position_set = false

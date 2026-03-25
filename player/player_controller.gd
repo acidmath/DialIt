@@ -9,7 +9,7 @@ const TopPosition = Vector2(0, -64)
 
 var hasBeenDefeated = false
 var engineForceStep = 0
-var engineForce = 200.0
+var engineForce = 20.0
 var spinForce = 100.0
 var lastThrustDeltaUpdate = 0
 var lastContactNormal : Vector2
@@ -21,13 +21,13 @@ var thrustFromDial = false
 @onready var fire_sprite_2d_right = $FireSprite2D_right
 @onready var collision_shape = $CollisionShape2D
 
-@onready var dial_1_input = %Dial_1
+@onready var dial_1_input : DialAbsolute = %Dial_Thrust
 
 func _ready() -> void:
-	%Dial_1.connect("dial_1_rotated", on_dial_1_rotated)
+	dial_1_input.dial_absolute_rotated.connect(on_dial_1_rotated)
 
 func on_dial_1_rotated(angle_diff : float):
-	thrustFromDial = angle_diff/10 != 0
+	thrustFromDial = angle_diff != 0
 
 func _physics_process(_delta):
 	var thrustFiring = Input.is_action_pressed("thrust") or thrustFromDial

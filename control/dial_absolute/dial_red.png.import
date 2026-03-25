@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cho2o5083tgka"
-path="res://.godot/imported/dial_red.png-35b59bb45be1e5a5fb955077001f506e.ctex"
+path="res://.godot/imported/dial_red.png-d55f45bbc8b890c9320845af558ee0a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://controls/dial_absolute/dial_red.png"
-dest_files=["res://.godot/imported/dial_red.png-35b59bb45be1e5a5fb955077001f506e.ctex"]
+source_file="res://control/dial_absolute/dial_red.png"
+dest_files=["res://.godot/imported/dial_red.png-d55f45bbc8b890c9320845af558ee0a1.ctex"]
 
 [params]
 

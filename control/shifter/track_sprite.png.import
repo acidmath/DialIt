@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2jkqwkqwtsjy"
-path="res://.godot/imported/dads_first_lava_block.png-825981bbda84a22c7a5a3e8a3a2fd21f.ctex"
+uid="uid://cb0fo5e72y528"
+path="res://.godot/imported/track_sprite.png-d1f4a5ab38223daf8c96809946d070ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/level_1/dads_first_lava_block.png"
-dest_files=["res://.godot/imported/dads_first_lava_block.png-825981bbda84a22c7a5a3e8a3a2fd21f.ctex"]
+source_file="res://control/shifter/track_sprite.png"
+dest_files=["res://.godot/imported/track_sprite.png-d1f4a5ab38223daf8c96809946d070ac.ctex"]
 
 [params]
 

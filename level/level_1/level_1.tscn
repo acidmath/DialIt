@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://omkqitj3by8v"]
 
 [ext_resource type="Script" uid="uid://exq6fexera64" path="res://level/level_1/level_1.gd" id="1_yaehp"]
-[ext_resource type="Script" uid="uid://q5pdih1t7u1w" path="res://player/player.gd" id="2_d1osm"]
+[ext_resource type="Script" uid="uid://q5pdih1t7u1w" path="res://player/player_controller.gd" id="2_d1osm"]
 [ext_resource type="Texture2D" uid="uid://dosflbl4771cc" path="res://player/fireSprite.png" id="3_ie7uf"]
 [ext_resource type="Texture2D" uid="uid://dhtt3gq3hvmtp" path="res://player/Lander_1.png" id="4_gwx4l"]
 [ext_resource type="AudioStream" uid="uid://cu185vlc38sq0" path="res://player/rocketShipSound.mp3" id="5_fkbji"]
@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://dyjwd8ufqjgyn" path="res://platform/platform.png" id="8_8xl1m"]
 [ext_resource type="Texture2D" uid="uid://cbb68rlvjnmdc" path="res://level/level_1/tio_moon_2.png" id="9_bwsuy"]
 [ext_resource type="Script" uid="uid://d3qp0rqgl6mh5" path="res://player/camera_2d.gd" id="10_nvhjt"]
-[ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://controls/dial_absolute/dial_1.tscn" id="11_mc16d"]
+[ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://control/dial_absolute/dial_absolute.tscn" id="11_mc16d"]
 [ext_resource type="Script" uid="uid://lmi5jjishgv8" path="res://level/level_1/Background.gd" id="12_7hqok"]
 [ext_resource type="PackedScene" uid="uid://cwpn6p0etxg47" path="res://menu/pause_menu.tscn" id="13_n1eyc"]
 [ext_resource type="Script" uid="uid://clcrs58pf3lga" path="res://rich_text_label.gd" id="14_hxgn6"]
-[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://controls/shifter/shifter.tscn" id="15_w8m4h"]
+[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://control/shifter/shifter.tscn" id="15_w8m4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -440,9 +440,6 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_n0ll6")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j4qnp"]
-load_path = "res://.godot/imported/dads_first_lava_block.png-424027159a28c2d492a35869b8aa1081.ctex"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fpfj3"]
 load_path = "res://.godot/imported/earthBlue.png-af10dad477df3902f80b7664e08a38c1.ctex"
 
@@ -517,18 +514,6 @@ position = Vector2(-315, -560)
 ignore_rotation = false
 script = ExtResource("10_nvhjt")
 
-[node name="Dial_1" parent="Camera2D" unique_id=224537146 instance=ExtResource("11_mc16d")]
-unique_name_in_owner = true
-position = Vector2(-111, 180)
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D" unique_id=226565593]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-595, -350)
-scale = Vector2(20, 5)
-texture_normal = SubResource("CompressedTexture2D_j4qnp")
-shape_centered = false
-action = "thrust"
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=68456334]
 scroll_ignore_camera_zoom = true
 
@@ -548,6 +533,13 @@ visible = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=514605837]
 
+[node name="Dial_Thrust" parent="CanvasLayer2" unique_id=224537146 instance=ExtResource("11_mc16d")]
+unique_name_in_owner = true
+position = Vector2(1066, 327)
+
+[node name="Shifter2" parent="CanvasLayer2" unique_id=775291380 instance=ExtResource("15_w8m4h")]
+position = Vector2(209, 479)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2" unique_id=1133101914]
 anchors_preset = 1
 anchor_left = 1.0
@@ -558,9 +550,6 @@ offset_right = 2.0
 offset_bottom = 85.0
 grow_horizontal = 0
 script = ExtResource("14_hxgn6")
-
-[node name="Shifter2" parent="." unique_id=775291380 instance=ExtResource("15_w8m4h")]
-position = Vector2(-767, -688)
 
 [connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

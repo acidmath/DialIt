@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dx6yqapunxjql"]
 
-[ext_resource type="Script" uid="uid://d14qq8roiy78x" path="res://controls/dial_absolute/dial_1_dial_area_2d.gd" id="1_ffsro"]
-[ext_resource type="Script" uid="uid://djoa8l70ooutb" path="res://controls/dial_absolute/dial_1.gd" id="1_xlujv"]
-[ext_resource type="Texture2D" uid="uid://cho2o5083tgka" path="res://controls/dial_absolute/dial_red.png" id="4_8oxyq"]
+[ext_resource type="Script" uid="uid://d14qq8roiy78x" path="res://control/dial_absolute/dial_absolute_dial_area_2d.gd" id="1_ffsro"]
+[ext_resource type="Script" uid="uid://djoa8l70ooutb" path="res://control/dial_absolute/dial_absolute.gd" id="1_xlujv"]
+[ext_resource type="Texture2D" uid="uid://cho2o5083tgka" path="res://control/dial_absolute/dial_red.png" id="4_8oxyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6ehr"]
 

@@ -1,5 +1,4 @@
 extends RigidBody2D
-
 class_name ShiftKnob
 
 var is_first_click : bool = true
@@ -12,7 +11,7 @@ func _input(event: InputEvent) -> void:
 		if event_mouse_button.pressed:
 			curr_mouse_position = event_mouse_button.position
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_first_click:
 		is_first_click = false
 	else:
