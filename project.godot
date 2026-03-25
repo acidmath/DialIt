@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Main="*res://main.gd"
+Main="*res://level/level_1/level_1.gd"
 PlayerSettings="*res://player_settings.gd"
 
 [display]

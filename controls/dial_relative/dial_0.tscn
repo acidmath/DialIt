@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cjxl6xjaff5y5"]
+
+[ext_resource type="Script" uid="uid://dp6y47ri25hvs" path="res://controls/dial_relative/dial_0.gd" id="1_5he14"]
+[ext_resource type="Script" uid="uid://15r85jg1v3vu" path="res://controls/dial_relative/dial_0_dial_area_2d.gd" id="3_6c71j"]
+[ext_resource type="Texture2D" uid="uid://bw5muc60578mv" path="res://controls/dial_relative/dial_red.png" id="3_k4hqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6ehr"]
+
+[node name="Node2D" type="Node2D" unique_id=224537146]
+script = ExtResource("1_5he14")
+
+[node name="Dial_Area2D" type="Area2D" parent="." unique_id=413843308]
+script = ExtResource("3_6c71j")
+
+[node name="Dial_CollisionShape2D" type="CollisionShape2D" parent="Dial_Area2D" unique_id=1186079699]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_h6ehr")
+
+[node name="Dial_Sprite2D" type="Sprite2D" parent="Dial_Area2D" unique_id=940260839]
+scale = Vector2(10, 10)
+texture = ExtResource("3_k4hqk")
