@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://lmi5jjishgv8" path="res://level/level_1/Background.gd" id="12_7hqok"]
 [ext_resource type="PackedScene" uid="uid://cwpn6p0etxg47" path="res://menu/pause_menu.tscn" id="13_n1eyc"]
 [ext_resource type="Script" uid="uid://clcrs58pf3lga" path="res://rich_text_label.gd" id="14_hxgn6"]
-[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://control/shifter/shifter.tscn" id="15_w8m4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -536,9 +535,6 @@ visible = false
 [node name="Dial_Thrust" parent="CanvasLayer2" unique_id=224537146 instance=ExtResource("11_mc16d")]
 unique_name_in_owner = true
 position = Vector2(1066, 327)
-
-[node name="Shifter2" parent="CanvasLayer2" unique_id=775291380 instance=ExtResource("15_w8m4h")]
-position = Vector2(209, 479)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2" unique_id=1133101914]
 anchors_preset = 1

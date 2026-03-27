@@ -9,11 +9,11 @@ const TopPosition = Vector2(0, -64)
 
 var hasBeenDefeated = false
 var engineForceStep = 0
-var engineForce = 20.0
+var engineForce = 200.0
 var spinForce = 100.0
 var lastThrustDeltaUpdate = 0
 var lastContactNormal : Vector2
-var thrustFromDial = false
+var thrustFromDial : float
 
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var fire_sprite_2d = $FireSprite2D
@@ -24,10 +24,11 @@ var thrustFromDial = false
 @onready var dial_1_input : DialAbsolute = %Dial_Thrust
 
 func _ready() -> void:
-	dial_1_input.dial_absolute_rotated.connect(on_dial_1_rotated)
+	dial_1_input.dial_absolute_rotated.connect(on_dial_thrust_rotated)
 
-func on_dial_1_rotated(angle_diff : float):
-	thrustFromDial = angle_diff != 0
+func on_dial_thrust_rotated(thrust : float):
+	thrustFromDial = thrust
+	print("absolute dial reading", thrust)
 
 func _physics_process(_delta):
 	var thrustFiring = Input.is_action_pressed("thrust") or thrustFromDial
@@ -40,11 +41,12 @@ func _physics_process(_delta):
 	if rightEngineFiring:
 		apply_force(Vector2.from_angle(rotation) * spinForce, TopPosition.rotated(rotation))		
 	if thrustFiring:
-		if engineForceStep < ENGINE_FORCE_STEP_MAX:
-			engineForceStep += 1
+		engineForceStep = thrustFromDial
+		#if engineForceStep < ENGINE_FORCE_STEP_MAX:
+			#engineForceStep += 1
 		apply_central_force(Vector2.from_angle(rotation - PI/2) * engineForce * engineForceStep)
-	elif engineForceStep > 0:
-		engineForceStep -= 1
+	#elif engineForceStep > 0:
+		#engineForceStep -= 1
 	
 	if engineForceStep == 0:
 		fire_sprite_2d.visible = false
