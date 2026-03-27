@@ -14,6 +14,10 @@
 [ext_resource type="Script" uid="uid://lmi5jjishgv8" path="res://level/level_1/Background.gd" id="12_7hqok"]
 [ext_resource type="PackedScene" uid="uid://cwpn6p0etxg47" path="res://menu/pause_menu.tscn" id="13_n1eyc"]
 [ext_resource type="Script" uid="uid://clcrs58pf3lga" path="res://rich_text_label.gd" id="14_hxgn6"]
+[ext_resource type="Texture2D" uid="uid://b4m2t5ori1ly" path="res://control/tilt/right_unpressed.png" id="15_aayvk"]
+[ext_resource type="Texture2D" uid="uid://b0fkgi6qysiqi" path="res://control/tilt/right_pressed.png" id="16_rf5qn"]
+[ext_resource type="Texture2D" uid="uid://d16akrpy434ty" path="res://control/tilt/left_unpressed.png" id="17_i1l77"]
+[ext_resource type="Texture2D" uid="uid://d2pb7vj8mp4lg" path="res://control/tilt/left_pressed.png" id="18_2q84h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb25u"]
 size = Vector2(70, 70)
@@ -546,6 +550,18 @@ offset_right = 2.0
 offset_bottom = 85.0
 grow_horizontal = 0
 script = ExtResource("14_hxgn6")
+
+[node name="right_tilt_button" type="TouchScreenButton" parent="CanvasLayer2" unique_id=1234506890]
+position = Vector2(1027, 521)
+texture_normal = ExtResource("15_aayvk")
+texture_pressed = ExtResource("16_rf5qn")
+action = "rRot"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer2" unique_id=253557086]
+position = Vector2(49, 530)
+texture_normal = ExtResource("17_i1l77")
+texture_pressed = ExtResource("18_2q84h")
+action = "lRot"
 
 [connection signal="screen_size_changed" from="." to="ParallaxBackground/GeneratedBackground" method="_on_screen_size_changed"]
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
