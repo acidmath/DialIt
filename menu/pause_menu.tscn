@@ -5,17 +5,17 @@
 [node name="PauseMenu" type="Control" unique_id=1026609771]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_7r8tx")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=261866685]
-layout_mode = 0
-offset_right = 654.0
-offset_bottom = 106.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 158.0
+grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=675010166]
 layout_mode = 2
