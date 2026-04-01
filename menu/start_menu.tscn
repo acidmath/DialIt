@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dvbl5xcd3wu8h"]
 
 [ext_resource type="Script" uid="uid://cycufhturif33" path="res://menu/start_menu.gd" id="1_rknbb"]
+[ext_resource type="Texture2D" uid="uid://dljyccnhn5o2v" path="res://menu/start_button.png" id="2_qfafo"]
+[ext_resource type="Texture2D" uid="uid://ccdsp8jvk2afv" path="res://menu/settings_button.png" id="3_ckqkc"]
+[ext_resource type="Texture2D" uid="uid://cijiecfileg0f" path="res://menu/quit_button.png" id="4_ug6gg"]
 
 [node name="Control" type="Control" unique_id=1889190443]
 layout_mode = 3
@@ -23,16 +26,23 @@ offset_bottom = 608.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1960716999]
 layout_mode = 2
-text = "Start"
+icon = ExtResource("2_qfafo")
+flat = true
+icon_alignment = 1
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=136251813]
 layout_mode = 2
-text = "Settings"
+icon = ExtResource("3_ckqkc")
+flat = true
+icon_alignment = 1
 
 [node name="ControlsButton" type="Button" parent="VBoxContainer" unique_id=2090041534]
+visible = false
 layout_mode = 2
 text = "Controls"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1550236073]
 layout_mode = 2
-text = "Quit"
+icon = ExtResource("4_ug6gg")
+flat = true
+icon_alignment = 1
