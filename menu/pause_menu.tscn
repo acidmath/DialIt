@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://tp6ty0pc4evs" path="res://menu/resume_button.png" id="2_5ijvr"]
 [ext_resource type="Texture2D" uid="uid://dxcjdrha1mjsv" path="res://menu/restart_button.png" id="3_yvytn"]
 [ext_resource type="Texture2D" uid="uid://ck2ii0j804t6l" path="res://menu/main_menu_button.png" id="4_cdtl2"]
+[ext_resource type="Texture2D" uid="uid://b6nwql7yfnrdf" path="res://menu/volume_label.png" id="5_yvytn"]
 
 [node name="PauseMenu" type="Control" unique_id=1026609771]
 process_mode = 3
@@ -50,10 +51,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=184052445]
+[node name="Label" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1703923445]
 layout_mode = 2
-text = "Volume"
-horizontal_alignment = 1
+texture = ExtResource("5_yvytn")
+stretch_mode = 3
 
 [node name="VolumeSlider" type="HSlider" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=83785044]
 layout_mode = 2

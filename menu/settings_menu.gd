@@ -2,7 +2,7 @@ extends Control
 class_name SettingsMenu
 
 func _ready() -> void:
-	var slider = self.get_node("./VBoxContainer/VolumeContainer/VolumeSlider")
+	var slider = self.get_node("./VBoxContainer/VolumeSlider")
 	slider.value = PlayerSettings.volume * 10
 
 func return_button_pressed():

@@ -28,19 +28,21 @@ icon = ExtResource("2_ctk4e")
 flat = true
 icon_alignment = 1
 
-[node name="VolumeContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=749494981]
+[node name="VolumeLabel" type="TextureRect" parent="VBoxContainer" unique_id=738061196]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="VolumeLabel" type="Sprite2D" parent="VBoxContainer/VolumeContainer" unique_id=2054316047]
 texture = ExtResource("3_kun5g")
+stretch_mode = 3
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/VolumeContainer" unique_id=399745656]
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer" unique_id=399745656]
 layout_mode = 2
 max_value = 10.0
 value = 10.0
 tick_count = 11
 
+[node name="VolumeContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=749494981]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="return_button_pressed"]
-[connection signal="value_changed" from="VBoxContainer/VolumeContainer/VolumeSlider" to="." method="volume_changed"]
+[connection signal="value_changed" from="VBoxContainer/VolumeSlider" to="." method="volume_changed"]
