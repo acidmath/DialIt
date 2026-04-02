@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://b8vb8n86rumjv"]
 
 [ext_resource type="Script" uid="uid://bru1sgf1mc5ss" path="res://menu/settings_menu.gd" id="1_4b43q"]
-[ext_resource type="PackedScene" uid="uid://cjxl6xjaff5y5" path="res://control/dial_relative/dial_relative.tscn" id="2_0cmel"]
-[ext_resource type="PackedScene" uid="uid://dx6yqapunxjql" path="res://control/dial_absolute/dial_absolute.tscn" id="3_mlw3h"]
-[ext_resource type="PackedScene" uid="uid://cjvybbc86a63f" path="res://control/shifter/shifter.tscn" id="6_h437d"]
+[ext_resource type="Texture2D" uid="uid://poqlpopwda0o" path="res://menu/return_button.png" id="2_ctk4e"]
+[ext_resource type="Texture2D" uid="uid://b6nwql7yfnrdf" path="res://menu/volume_label.png" id="3_kun5g"]
 
 [node name="Control" type="Control" unique_id=1813169787]
 layout_mode = 3
@@ -25,32 +24,23 @@ grow_horizontal = 2
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer" unique_id=2547006]
 layout_mode = 2
-text = "Return"
+icon = ExtResource("2_ctk4e")
+flat = true
+icon_alignment = 1
 
 [node name="VolumeContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=749494981]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="VolumeLabel" type="Label" parent="VBoxContainer/VolumeContainer" unique_id=1818696710]
-layout_mode = 2
-text = "Volume"
-horizontal_alignment = 1
+[node name="VolumeLabel" type="Sprite2D" parent="VBoxContainer/VolumeContainer" unique_id=2054316047]
+texture = ExtResource("3_kun5g")
 
 [node name="VolumeSlider" type="HSlider" parent="VBoxContainer/VolumeContainer" unique_id=399745656]
 layout_mode = 2
 max_value = 10.0
 value = 10.0
 tick_count = 11
-
-[node name="Node2D" parent="VBoxContainer" unique_id=224537146 instance=ExtResource("2_0cmel")]
-position = Vector2(1139, 547)
-
-[node name="Node2D2" parent="VBoxContainer" unique_id=1582228804 instance=ExtResource("3_mlw3h")]
-position = Vector2(1132, 198)
-
-[node name="Shifter2" parent="." unique_id=775291380 instance=ExtResource("6_h437d")]
-position = Vector2(217, 448)
 
 [connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="return_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/VolumeContainer/VolumeSlider" to="." method="volume_changed"]
