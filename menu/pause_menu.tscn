@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cwpn6p0etxg47"]
 
 [ext_resource type="Script" uid="uid://b744o12b56hxj" path="res://menu/pause_menu.gd" id="1_7r8tx"]
+[ext_resource type="Texture2D" uid="uid://tp6ty0pc4evs" path="res://menu/resume_button.png" id="2_5ijvr"]
+[ext_resource type="Texture2D" uid="uid://dxcjdrha1mjsv" path="res://menu/restart_button.png" id="3_yvytn"]
+[ext_resource type="Texture2D" uid="uid://ck2ii0j804t6l" path="res://menu/main_menu_button.png" id="4_cdtl2"]
 
 [node name="PauseMenu" type="Control" unique_id=1026609771]
 process_mode = 3
@@ -26,15 +29,21 @@ size_flags_horizontal = 3
 
 [node name="resume" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1965937612]
 layout_mode = 2
-text = "Resume"
+icon = ExtResource("2_5ijvr")
+flat = true
+icon_alignment = 1
 
 [node name="restart" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1205577978]
 layout_mode = 2
-text = "Restart"
+icon = ExtResource("3_yvytn")
+flat = true
+icon_alignment = 1
 
 [node name="main_menu" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1005850042]
 layout_mode = 2
-text = "Main Menu"
+icon = ExtResource("4_cdtl2")
+flat = true
+icon_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=260069102]
 layout_mode = 2
